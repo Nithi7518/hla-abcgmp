@@ -57,8 +57,10 @@ class Diagnoser:
         cal = json.loads(Path(calibration_json).read_text())
         self.temperature = cal["temperature"]
         self.t_confident = cal["threshold_confident"]
-        self.t_refuse = cal["threshold_refuse"]
-        self.cam = GradCAM(self.model)
+        # Target layer3 (14x14 multi-scale dilated stage) for sharp lesion localization instead of coarse layer4 (7x7)
+        backbone_obj = getattr(self.model, "backbone", self.model)
+        target_cam_layer = getattr(backbone_obj, "layer3", getattr(backbone_obj, "layer4", None))
+        self.cam = GradCAM(self.model, target_layer=target_cam_layer)
         self.ood = None
         self.ood_group_thr = None
         if Path(OOD_STATS).exists():

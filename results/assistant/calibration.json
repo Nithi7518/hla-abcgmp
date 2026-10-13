@@ -6,7 +6,7 @@
   "ece_test_before": 0.05568371383135749,
   "ece_test_after": 0.05115510415533068,
   "threshold_confident": 0.714900016784668,
-  "threshold_refuse": 0.30,
+  "threshold_refuse": 0.20,
   "thresholds_derived_from": "validation split only (confident: accepted accuracy >= 0.985; refuse: rejected accuracy <= 0.5)",
   "test_tiers": {
     "confident": {
