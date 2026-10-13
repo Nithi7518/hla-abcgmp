@@ -88,10 +88,10 @@
                 <span class="panel-badge">Option A</span>
                 <h2>Upload Specimen Photo</h2>
               </div>
-              <p class="hint" style="margin-bottom:10px;">Upload any leaf or fruit photo from your device or the web (JPG/PNG up to 10 MB).</p>
+              <p class="hint" style="margin-bottom:14px;">Upload any leaf or fruit photo from your device or the web (JPG/PNG up to 10 MB). The model autonomously classifies the specimen across all 23 classes.</p>
             </div>
 
-            <label class="dropzone" id="dropzone" for="file">
+            <label class="dropzone" id="dropzone" for="file" style="flex:1; min-height:190px;">
               <input type="file" id="file" accept="image/jpeg,image/png" hidden>
               <div class="dropzone-icon">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -99,34 +99,6 @@
               <strong>Drop a leaf or fruit image here</strong>
               <span>or <u class="browse-link">click to browse files</u></span>
             </label>
-
-            <div class="context-bar">
-              <div class="context-bar-title">
-                <span>Agronomic Context Priors <small style="font-weight:400; color:var(--text-muted);">(Optional — leave on Auto for blind uploads)</small></span>
-              </div>
-              <div class="context-controls">
-                <div class="control-group">
-                  <label for="user-crop">Host Crop</label>
-                  <select id="user-crop">
-                    <option value="">Auto-Detect / Unknown</option>
-                    <option value="apple">🍎 Apple</option>
-                    <option value="banana">🍌 Banana</option>
-                    <option value="citrus">🍊 Citrus</option>
-                    <option value="guava">🍐 Guava</option>
-                    <option value="mango">🥭 Mango</option>
-                    <option value="papaya">🍈 Papaya</option>
-                  </select>
-                </div>
-                <div class="control-group">
-                  <label for="user-organ">Plant Organ</label>
-                  <select id="user-organ">
-                    <option value="">Auto-Detect / Unknown</option>
-                    <option value="leaf">🍃 Leaf Blade</option>
-                    <option value="fruit">🍎 Fruit</option>
-                  </select>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="studio-panel">

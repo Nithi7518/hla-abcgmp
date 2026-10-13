@@ -133,9 +133,6 @@
     const getFormData = (file) => {
       const fd = new FormData();
       fd.append("file", file);
-      const c = $("user-crop"), o = $("user-organ");
-      if (c && c.value) fd.append("crop", c.value);
-      if (o && o.value) fd.append("organ", o.value);
       return fd;
     };
     input.addEventListener("change", () => {
