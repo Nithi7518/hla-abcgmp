@@ -1,0 +1,79 @@
+# Dataset-level configuration for the ABCGMP Fruit and Leaf Disease Six Crop Dataset.
+# Nothing here is hard-coded into src/ — all scripts read this file (or a --config
+# override) rather than assuming paths, class names, or ratios.
+
+dataset:
+  # Root directory that is scanned by dataset_audit.py / data_loader.py.
+  # Populated by extracting the Mendeley archives (DOI 10.17632/fhbvmpcyy2.2).
+  # As downloaded, this directory contains two overlapping top-level collections
+  # (see results/dataset_summary.md "Provenance" section for why both exist):
+  #   data/raw/dataset_main/<class_folder>/*.jpg
+  #   data/raw/dataset_v1/<class_folder>/*.jpg
+  #   data/raw/_archives/*.zip   (original downloaded archives, preserved as-is)
+  root: ./data/raw
+
+  # Sub-directories under `root` that should never be scanned for images/metadata
+  # (e.g. the preserved original zip archives).
+  exclude_dirs:
+    - _archives
+
+  # File extensions treated as images vs. structured metadata during the audit.
+  # Extend here rather than editing src/dataset_audit.py if new formats appear.
+  image_extensions: [".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"]
+  metadata_extensions: [".csv", ".json", ".xlsx", ".xls"]
+
+classes:
+  mapping_file: ./configs/classes.yaml
+
+metadata:
+  enabled: true
+  mapping_file: ./configs/metadata_mapping.yaml
+  # NOTE: as of the current dataset_audit.py run against DOI 10.17632/fhbvmpcyy2.2,
+  # NO structured metadata files (csv/json/xlsx/xls) were found anywhere under
+  # data/raw despite the dataset description mentioning soil health, humidity,
+  # nutrient deficiency and pathological report annotations. configs/metadata_mapping.yaml
+  # therefore does not exist yet. See results/dataset_audit.json -> "metadata_audit"
+  # and results/dataset_summary.md for METADATA_PAIRING_STATUS. Do not create a
+  # metadata mapping file that invents fields not present in the actual download.
+
+splitting:
+  strategy: stratified   # stratified | group_aware | crop_held_out
+  train_ratio: 0.70
+  validation_ratio: 0.15
+  test_ratio: 0.15
+  seed: 42
+
+image:
+  size: 224
+
+audit:
+  # Output locations for `python -m src.dataset_audit`.
+  output_dir: ./results
+  # Set false to skip the (cheap, PIL-only) average-hash near-duplicate scan.
+  compute_near_duplicate_hash: true
+
+duplicate_detection:
+  # `python -m src.duplicate_detection` reuses the per-image inventory produced by
+  # the audit above rather than re-scanning the dataset from scratch.
+  audit_csv: ./results/dataset_audit.csv
+  output_dir: ./results
+  manifest_dir: ./data/manifests
+  # Max Hamming distance (out of 64 bits) for two images to be linked as near-duplicates
+  # under each hash. Recall is guaranteed-complete for thresholds strictly less than
+  # lsh_bands (see src/duplicate_detection.py::lsh_candidate_pairs).
+  phash_threshold: 8
+  dhash_threshold: 8
+  ahash_threshold: 8
+  # A pair is only linked as a near-duplicate if at least this many of the 3 hash
+  # algorithms (aHash/dHash/pHash) independently agree within their own threshold.
+  # See src/duplicate_detection.py::detect_duplicates for why this matters (an
+  # earlier single-signal, non-crop-bucketed run produced a false-positive group
+  # spanning all 6 crops via hash-collision chaining through union-find).
+  min_hash_signal_agreement: 2
+  lsh_bands: 4
+  lsh_band_bits: 16
+  # Optional, off by default: pretrained-CNN embedding cosine-similarity near-duplicate
+  # detection (requires torch/torchvision, downloads ImageNet weights on first use).
+  enable_semantic: false
+  semantic_threshold: 0.97
+  semantic_model: resnet18

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhytoGuard AI — Multimodal Plant Pathology Platform</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B2B1E'/%3E%3Cpath d='M8 23c0-9 6-15 16-15 0 10-6 15-15 15z' fill='%2334D399'/%3E%3Cpath d='M8 23c5-5 8-9 13-12' stroke='%230B2B1E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Navigation Bar -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="/" class="brand">
+          <div class="logo-wrap">
+            <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="9" fill="#10B981"/>
+              <path d="M8 23c0-8.5 5.5-14 15-15 0 9.5-5.5 15-14 15z" fill="#06281B"/>
+              <path d="M8 23c4.5-5 7.5-8.5 12-11.5" stroke="#34D399" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PhytoGuard <span class="brand-accent">AI</span></span>
+            <span class="brand-sub">ABCGMP Multimodal Pathology Platform</span>
+          </div>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Navigation">
+          <a href="/" class="nav-link active">Home</a>
+          <a href="/diagnose" class="nav-link">Diagnostic Studio</a>
+          <a href="/compare" class="nav-link">Model Comparison</a>
+          <a href="/crops" class="nav-link">Crops &amp; Architecture</a>
+        </nav>
+
+        <div class="header-badges">
+          <span class="pill status-pill"><span class="status-dot"></span> 96.35% Test Acc</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Single-Screen Non-Scrolling Home Stage -->
+    <main class="home-stage">
+      <div class="wrap home-grid">
+        <div class="home-hero">
+          <div class="eyebrow-badge">
+            <span>ABCGMP 6-Crop Dataset</span>
+            <span>·</span>
+            <span>23 Foliar &amp; Fruit Classes</span>
+          </div>
+          <h1>Explainable Plant Disease Diagnosis with <span class="gradient-text">Multimodal HLA-Net</span></h1>
+          <p class="hero-lead">
+            Powered by our custom from-scratch <strong>Hierarchical Lesion-Aware Network (HLA-Net)</strong> and <strong>12-D Agronomic Gated Fusion</strong>. Select any page module on the right or below to diagnose specimens, compare models on authentic test data, or explore the architecture.
+          </p>
+          <div class="hero-actions">
+            <a href="/diagnose" class="btn btn-primary btn-lg">Open Diagnostic Studio →</a>
+            <a href="/compare" class="btn btn-outline btn-lg">Compare Models</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <strong>96.35%</strong>
+              <span>Test Accuracy (N=1,341)</span>
+            </div>
+            <div class="metric-item">
+              <strong>91.93%</strong>
+              <span>Balanced Accuracy</span>
+            </div>
+            <div class="metric-item">
+              <strong>91.69%</strong>
+              <span>Macro F1 Score</span>
+            </div>
+            <div class="metric-item">
+              <strong>1.71M</strong>
+              <span>HLA-Net Parameters</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Direct Page Navigation Cards -->
+        <div class="portal-cards">
+          <a href="/diagnose" class="portal-card">
+            <div class="portal-card-left">
+              <div class="portal-icon">🔬</div>
+              <div>
+                <h3>1. Pathology Diagnostic Studio</h3>
+                <p>Step-by-step wizard: Upload photo → Grad-CAM Verdict → Bayesian Q&amp;A → Sourced Advice → AI Chat.</p>
+              </div>
+            </div>
+            <span class="portal-arrow">→</span>
+          </a>
+
+          <a href="/compare" class="portal-card">
+            <div class="portal-card-left">
+              <div class="portal-icon">📊</div>
+              <div>
+                <h3>2. Authentic Model Comparison &amp; Contrast</h3>
+                <p>Page-by-page empirical comparison of Multimodal HLA-Net, Unimodal HLA-Net, and ResNet-18 baselines.</p>
+              </div>
+            </div>
+            <span class="portal-arrow">→</span>
+          </a>
+
+          <a href="/crops" class="portal-card">
+            <div class="portal-card-left">
+              <div class="portal-icon">🌿</div>
+              <div>
+                <h3>3. Supported Crops, Audit &amp; Architecture</h3>
+                <p>Browse Apple, Banana, Citrus, Guava, Mango &amp; Papaya classes, HLA-Net layers, and split audit logs.</p>
+              </div>
+            </div>
+            <span class="portal-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Page Navigation Bar -->
+    <footer class="pager-bar" style="background:#041810; border-top-color:rgba(52,211,153,0.18);">
+      <div class="wrap pager-inner">
+        <span class="pager-info" style="color:#93B8A6;">Page 1 of 4 · Home Portal (DOI: 10.17632/fhbvmpcyy2.2 · Leak-Free Group Split)</span>
+        <div class="pager-actions">
+          <a href="/diagnose" class="btn btn-primary btn-sm">Next Page: Diagnostic Studio →</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

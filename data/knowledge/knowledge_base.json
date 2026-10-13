@@ -1,0 +1,330 @@
+{
+ "_note": "Short paraphrases written from full reads of the cited pages (2026-10-11). Not expert-reviewed; open the source before acting and follow local extension advice.",
+ "_verification": "Checked against the full text of each cited page. Sources that blocked retrieval (WVU Extension, Northern Territory DAF, APS Education Center, Hawaii Dept. of Agriculture) were dropped and nothing in this file relies on them.",
+ "passages": [
+  {
+   "id": "apple_br_sym",
+   "labels": [
+    "apple__black_rot"
+   ],
+   "topic": "symptoms",
+   "text": "On leaves, black rot shows as 'frogeye' spots: small purple-to-brown spots whose centre turns tan or brown while the margin stays purple or dark, like a frog's eye. On fruit, rotted areas turn black or chestnut-coloured and can show concentric rings, and fruit may mummify and stay on the tree. Limb and trunk cankers are sunken and reddish-brown and resemble fire blight.",
+   "sources": [
+    {
+     "source_title": "Frog-eye / Black Rot of apples and pears (Iowa State Extension)",
+     "source_url": "https://yardandgarden.extension.iastate.edu/encyclopedia/frog-eye-black-rot-apples-and-pears",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    },
+    {
+     "source_title": "Frogeye leaf spot and black rot on apple (UNH Extension)",
+     "source_url": "https://extension.unh.edu/resource/frogeye-leaf-spot-black-rot-apple-0",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "apple_br_spread",
+   "labels": [
+    "apple__black_rot"
+   ],
+   "topic": "spread",
+   "text": "The fungus is spread by wind, splashing water and insects. Cankers generally develop only on stressed or weakened trees, and trees stressed by poor nutrition are more susceptible.",
+   "sources": [
+    {
+     "source_title": "Frog-eye / Black Rot of apples and pears (Iowa State Extension)",
+     "source_url": "https://yardandgarden.extension.iastate.edu/encyclopedia/frog-eye-black-rot-apples-and-pears",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    },
+    {
+     "source_title": "Frogeye leaf spot and black rot on apple (UNH Extension)",
+     "source_url": "https://extension.unh.edu/resource/frogeye-leaf-spot-black-rot-apple-0",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "apple_br_mgmt",
+   "labels": [
+    "apple__black_rot"
+   ],
+   "topic": "management",
+   "text": "Prune out dead or diseased branches, discard mummified or early-stage rotting fruit and remove stumps. Prune trees annually and keep fertility balanced, since weak or poorly nourished trees are more vulnerable. The Iowa State page lists protectant fungicides for home gardeners and fungicide rotation for commercial orchards; check your local extension spray guide for current products and timing.",
+   "sources": [
+    {
+     "source_title": "Frog-eye / Black Rot of apples and pears (Iowa State Extension)",
+     "source_url": "https://yardandgarden.extension.iastate.edu/encyclopedia/frog-eye-black-rot-apples-and-pears",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    },
+    {
+     "source_title": "Frogeye leaf spot and black rot on apple (UNH Extension)",
+     "source_url": "https://extension.unh.edu/resource/frogeye-leaf-spot-black-rot-apple-0",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "banana_cordana_sym",
+   "labels": [
+    "banana__cordana"
+   ],
+   "topic": "symptoms",
+   "text": "Cordana leaf spot makes large oval-to-diamond-shaped spots that are brown on the upper leaf surface with a yellow border and lie at right angles to the length of the leaf. Spores on the underside make the spots look greyish-brown and hairy. Spots often merge and can cover large areas of the leaf.",
+   "sources": [
+    {
+     "source_title": "Banana diamond leaf spot (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/banana_diamond_leaf_spot_072.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    },
+    {
+     "source_title": "Cordana leaf spot (Bayer Crop Science Australia)",
+     "source_url": "https://www.crop.bayer.com.au/crop-management/diseases/cordana-leaf-spot",
+     "publisher_type": "company agronomy page",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "banana_cordana_spread",
+   "labels": [
+    "banana__cordana"
+   ],
+   "topic": "spread",
+   "text": "Spores are dispersed in wet, windy weather, and frequent rain with hot, humid conditions speeds up growth and spread. The fungus is a weak pathogen that is usually a secondary invader of lesions caused by other fungi (for example black cross) and may need a wound to infect. Waterlogging, drought, nutrient deficiency and injury or other diseases give it an entry point.",
+   "sources": [
+    {
+     "source_title": "Banana diamond leaf spot (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/banana_diamond_leaf_spot_072.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    },
+    {
+     "source_title": "Cordana leaf spot (Bayer Crop Science Australia)",
+     "source_url": "https://www.crop.bayer.com.au/crop-management/diseases/cordana-leaf-spot",
+     "publisher_type": "company agronomy page",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "banana_cordana_mgmt",
+   "labels": [
+    "banana__cordana"
+   ],
+   "topic": "management",
+   "text": "Monitor plants and remove infected leaves. The sources disagree on fungicide: one fact sheet says control is generally unnecessary, especially on Cavendish bananas, while the Bayer page advises a registered fungicide when required, so check what is registered locally. The fact sheet reports the disease is said to be worse where misting oils are used.",
+   "sources": [
+    {
+     "source_title": "Banana diamond leaf spot (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/banana_diamond_leaf_spot_072.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    },
+    {
+     "source_title": "Cordana leaf spot (Bayer Crop Science Australia)",
+     "source_url": "https://www.crop.bayer.com.au/crop-management/diseases/cordana-leaf-spot",
+     "publisher_type": "company agronomy page",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "citrus_canker_sym",
+   "labels": [
+    "citrus__canker_leaf"
+   ],
+   "topic": "symptoms",
+   "text": "Citrus canker causes raised pustules on both leaf surfaces, especially the underside. They later become corky and crater-like with raised margins, sunken centres and a yellow halo. Fruit lesions vary in size, and twig and stem lesions are raised and corky.",
+   "sources": [
+    {
+     "source_title": "2026-2029 Florida Citrus Production Guide: Citrus Canker (UF/IFAS PP-182)",
+     "source_url": "https://ask.ifas.ufl.edu/publication/CG040/pdf",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "citrus_canker_spread",
+   "labels": [
+    "citrus__canker_leaf"
+   ],
+   "topic": "spread",
+   "text": "The bacteria ooze from wet lesions and are spread mainly by wind-driven rain; strong winds help them enter through stomata or wounds made by thorns, insects and blowing sand. Leafminer damage greatly increases leaf susceptibility. Young shoots and young fruit are the most vulnerable. Long-distance spread is mostly through infected plant material, and workers and equipment can carry the bacteria between groves. Grapefruit and Mexican lime are highly susceptible and tangerines are the least.",
+   "sources": [
+    {
+     "source_title": "2026-2029 Florida Citrus Production Guide: Citrus Canker (UF/IFAS PP-182)",
+     "source_url": "https://ask.ifas.ufl.edu/publication/CG040/pdf",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "citrus_canker_mgmt",
+   "labels": [
+    "citrus__canker_leaf"
+   ],
+   "topic": "management",
+   "text": "Where canker is established, the main measures are windbreaks, copper protection of fruit and leaves, and leafminer control. Copper works well for preventing fruit infection but much less for leaf infection, and it accumulates in soil, so use should be minimised. Defoliation and pruning are not recommended because they trigger susceptible new flushes, and decontaminating equipment and tools matters when moving between groves. Rules on citrus canker (quarantine, fruit movement) vary by region and change, so contact your local agriculture authority or extension agent.",
+   "sources": [
+    {
+     "source_title": "2026-2029 Florida Citrus Production Guide: Citrus Canker (UF/IFAS PP-182)",
+     "source_url": "https://ask.ifas.ufl.edu/publication/CG040/pdf",
+     "publisher_type": "university extension",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "guava_rr_sym",
+   "labels": [
+    "guava__red_rust"
+   ],
+   "topic": "symptoms",
+   "text": "Red rust (an algal leaf spot caused by Cephaleuros) shows as round, furry, green-to-orange spots that may merge. On guava fruit it causes irregular black spots and distortion that reduce quality. It is generally a minor disease.",
+   "sources": [
+    {
+     "source_title": "Algal leaf spots, red rust (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/algal_leaf_spot_148.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "guava_rr_spread",
+   "labels": [
+    "guava__red_rust"
+   ],
+   "topic": "spread",
+   "text": "It spreads by wind and water splash and is common where temperature and rainfall are high. Poor nutrition, poor drainage, and too much or too little shade favour it.",
+   "sources": [
+    {
+     "source_title": "Algal leaf spots, red rust (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/algal_leaf_spot_148.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "guava_rr_mgmt",
+   "labels": [
+    "guava__red_rust"
+   ],
+   "topic": "management",
+   "text": "Control relies on growing conditions: prune low-hanging branches, improve drainage and nutrition, adjust shade, tree spacing and weeds so air can move. Control is rarely needed except on very susceptible crops such as guava in high-rainfall areas, and the fact sheet says chemical control is not an appropriate method, naming no fungicide.",
+   "sources": [
+    {
+     "source_title": "Algal leaf spots, red rust (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp/text/web_full/entities/algal_leaf_spot_148.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "mango_bc_sym",
+   "labels": [
+    "mango__bacterial_canker"
+   ],
+   "topic": "symptoms",
+   "text": "On leaves, bacterial black spot (bacterial canker) appears as black, angular, greasy-looking spots between the veins, often with yellow halos, that turn grey and crack with age. On fruit it forms black, oval to irregular raised spots with greasy margins that can crack and ooze bacteria. Stem cankers can cause shoot-tip dieback.",
+   "sources": [
+    {
+     "source_title": "Mango bacterial black spot (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/pppw_v13/text/web_full/entities/mango_bacterial_black_spot_213.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "mango_bc_spread",
+   "labels": [
+    "mango__bacterial_canker"
+   ],
+   "topic": "spread",
+   "text": "The bacteria enter through natural openings and wounds, and wind damage and other superficial damage make infection easier. They are spread by wind-blown rain, and over long distances mainly on nursery trees.",
+   "sources": [
+    {
+     "source_title": "Mango bacterial black spot (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/pppw_v13/text/web_full/entities/mango_bacterial_black_spot_213.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "mango_bc_mgmt",
+   "labels": [
+    "mango__bacterial_canker"
+   ],
+   "topic": "management",
+   "text": "Use disease-free local rootstock and scion wood, raise nurseries away from mango plantations, and choose a wind-protected site or windbreaks that still allow air movement. Prefer drip to sprinkler irrigation, prune to reduce dense foliage, sterilise pruning tools with bleach after each tree, and harvest by clipping fruit stalks. After harvest, prune out infection sources, collect and burn the cuttings, and do not market fruit with the disease. Copper fungicides are recommended every 2 to 4 weeks in commercial plantations, but follow local advice and label instructions.",
+   "sources": [
+    {
+     "source_title": "Mango bacterial black spot (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/pppw_v13/text/web_full/entities/mango_bacterial_black_spot_213.htm",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "papaya_prsv_sym",
+   "labels": [
+    "papaya__ring_spot"
+   ],
+   "topic": "symptoms",
+   "text": "Papaya ringspot virus makes leaves mottled with a yellow-and-green mosaic pattern, and they become distorted and much smaller. Older leaves show dark green streaks on the leaf stalks, and characteristic ring spots develop on the fruit. Plants may be stunted with fewer fruits and poorer flavour, but they rarely die.",
+   "sources": [
+    {
+     "source_title": "Papaya ringspot (virus-P) (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp_v9/pdf/web_full/papaya_ringspot_virusp_194.pdf",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "papaya_prsv_spread",
+   "labels": [
+    "papaya__ring_spot"
+   ],
+   "topic": "spread",
+   "text": "Aphids spread the virus from infected trees to healthy ones; they feed briefly on papaya, move on and feed again, so spread can be very fast. Moving infected plants from nurseries to plantations also spreads it. Weeds and seed are not considered important routes.",
+   "sources": [
+    {
+     "source_title": "Papaya ringspot (virus-P) (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp_v9/pdf/web_full/papaya_ringspot_virusp_194.pdf",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  },
+  {
+   "id": "papaya_prsv_mgmt",
+   "labels": [
+    "papaya__ring_spot"
+   ],
+   "topic": "management",
+   "text": "Remove volunteer papaya in and around plantings, restrict movement of people within the plantation (aphids can ride on clothes), and remove diseased trees as soon as symptoms appear, plus severely affected blocks, since they are sources of virus and aphids. Growing under netting works but is expensive. Resistant varieties exist, but the fact sheet says chemical control is not effective because aphids transmit the virus too quickly for insecticides to help.",
+   "sources": [
+    {
+     "source_title": "Papaya ringspot (virus-P) (Pacific Pests & Pathogens fact sheet)",
+     "source_url": "https://apps.lucidcentral.org/ppp_v9/pdf/web_full/papaya_ringspot_virusp_194.pdf",
+     "publisher_type": "regional agriculture fact sheet",
+     "verified": "full page read 2026-10-11"
+    }
+   ]
+  }
+ ]
+}

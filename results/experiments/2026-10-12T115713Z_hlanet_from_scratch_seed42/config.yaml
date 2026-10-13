@@ -1,0 +1,71 @@
+# Novel Custom Architecture: HLA-Net (Hierarchical Lesion-Aware Multiscale Attention Network)
+# Built from scratch in PyTorch.
+# Includes rigorous anti-overfitting (DropPath, Dropout, Weight Decay, Group-Aware Splitting)
+# and anti-underfitting (MSR-Stem, Multiscale Atrous Dilations, Coordinate Attention, Class-Weighted Loss) safeguards.
+
+experiment:
+  name: hlanet_from_scratch
+  seed: 42
+  device: auto  # auto | cpu | cuda | mps
+
+data:
+  audit_csv: ./results/dataset_audit.csv
+  duplicate_groups_csv: ./data/manifests/duplicate_groups.csv
+  classes_config: ./configs/classes.yaml
+  data_root: ./data/raw
+  manifests_dir: ./data/manifests
+
+  # Use dataset_main (single authoritative collection, avoiding duplicate double-counting)
+  source_collections: [dataset_main]
+
+  # Exclude raw labeling defect groups (e.g. apple stock photos misfiled under banana cordana)
+  exclude_label_conflicting_duplicate_groups: true
+  manual_exclusions_csv: ./configs/manual_exclusions.csv
+
+  # Group-aware splitting unit: guarantees rotated/flipped copies never leak across splits
+  robust_groups_csv: ./data/manifests/robust_groups.csv
+
+  task: full_class  # 23-way per-crop diagnosis
+
+splitting:
+  strategy: stratified_group
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  seed: 42
+
+image:
+  size: 224
+  normalization: imagenet
+  train_augmentation:
+    horizontal_flip: true
+    vertical_flip: true
+    rotation_degrees: 15
+    color_jitter: 0.1
+
+model:
+  backbone: hla_net
+  type: hla_net
+  stage_channels: [64, 128, 256, 512]
+  stage_depths: [2, 2, 3, 2]
+  dropout: 0.3          # Regularization against overfitting
+  drop_path_rate: 0.1   # Stochastic depth regularization
+
+training:
+  batch_size: 32
+  epochs: 15
+  early_stopping_patience: 5
+  early_stopping_metric: val_macro_f1
+  optimizer: adamw
+  learning_rate: 0.0003 # Tuned for continued stable convergence
+  weight_decay: 0.0001  # L2 regularization against overfitting
+  lr_scheduler: reduce_on_plateau
+  lr_scheduler_patience: 2
+  lr_scheduler_factor: 0.5
+  class_imbalance_strategy: class_weighted_loss  # Safeguard against underfitting rare classes
+  num_workers: 0        # Safe default for Windows multiprocessing
+
+output:
+  experiments_dir: ./results/experiments
+  checkpoints_dir: ./checkpoints
+  logs_dir: ./logs

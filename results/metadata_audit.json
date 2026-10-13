@@ -1,0 +1,8 @@
+{
+  "metadata_files_found": [],
+  "n_metadata_files": 0,
+  "n_metadata_tables_profiled": 0,
+  "profiles": [],
+  "metadata_pairing_status": "NOT_AVAILABLE",
+  "metadata_pairing_explanation": "No structured metadata files (csv/json/xlsx/xls) were found under the data root. The dataset description mentions expert annotations (soil health, humidity, nutrient deficiency, pathological reports) but these are not present in the downloaded archive contents. Multimodal experiments that require per-image or per-sample metadata are DISABLED until such a file is located and its linkage to images is verified."
+}

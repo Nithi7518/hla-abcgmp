@@ -1,0 +1,72 @@
+# Multimodal Architecture Configuration:
+# Vision Stream: HLA-Net (Hierarchical Lesion-Aware Attention Network)
+# Tabular Stream: Agronomic/Environmental Context MLP (12 features)
+# Fusion Stream: Dynamic Gated Fusion Layer with 15% metadata dropout
+
+experiment:
+  name: multimodal_hlanet_fusion
+  seed: 42
+  device: cuda
+
+data:
+  audit_csv: ./results/dataset_audit.csv
+  duplicate_groups_csv: ./data/manifests/duplicate_groups.csv
+  classes_config: ./configs/classes.yaml
+  data_root: ./data/raw
+  manifests_dir: ./data/manifests
+  source_collections: [dataset_main]
+  exclude_label_conflicting_duplicate_groups: true
+  task: full_class
+
+model:
+  type: multimodal_fusion
+  backbone: hla_net
+  num_metadata_features: 12
+  image_embedding_dim: 256
+  metadata_embedding_dim: 64
+  fusion_hidden_dim: 128
+  dropout: 0.3
+  pretrained: false
+
+metadata:
+  enabled: true
+  strategy: agronomic_context
+  dropout_prob: 0.15
+
+splitting:
+  strategy: stratified_group
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  seed: 42
+
+image:
+  size: 256
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+  augmentation:
+    random_horizontal_flip: 0.5
+    random_vertical_flip: 0.5
+    random_rotation_degrees: 15
+    color_jitter:
+      brightness: 0.2
+      contrast: 0.2
+      saturation: 0.2
+      hue: 0.05
+
+training:
+  epochs: 30
+  batch_size: 64
+  num_workers: 0
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  lr_scheduler: cosine
+  class_imbalance_strategy: balanced_focal
+  early_stopping_metric: val_macro_f1
+  early_stopping_patience: 10
+
+output:
+  experiments_dir: ./results/experiments
+  checkpoints_dir: ./checkpoints
+  logs_dir: ./results/logs

@@ -1,0 +1,36 @@
+{
+  "threshold_95th_pct_of_val": 30.026518392992443,
+  "in_distribution_test_rejected": 0.05145413870246085,
+  "stock_apple_photos": {
+    "n": 339,
+    "auroc_vs_test": 0.9030354224272381,
+    "rejected": 0.35988200589970504
+  },
+  "synthetic": {
+    "n": 60,
+    "auroc_vs_test": 0.9843151876708924,
+    "rejected": 0.9833333333333333
+  },
+  "per_group_threshold": {
+    "thresholds": {
+      "fruit": 35.392881847526105,
+      "other": 26.08973472283736
+    },
+    "in_distribution_test_flagged": {
+      "fruit": 0.06198347107438017,
+      "other": 0.03821656050955414
+    },
+    "in_distribution_test_flagged_overall": 0.042505592841163314,
+    "stock_apple_photos_flagged": 0.0943952802359882,
+    "synthetic_flagged": 0.8666666666666667
+  },
+  "global_threshold_flag_rate_by_group_test": {
+    "fruit": 0.2727272727272727,
+    "other": 0.00272975432211101
+  },
+  "median_distance": {
+    "test": 20.217815527763864,
+    "stock": 28.63303454983321,
+    "synthetic": 39.7210219594582
+  }
+}

@@ -1,0 +1,93 @@
+# Phase 9: Multimodal fusion (image + metadata).
+#
+# STATUS: NOT RUNNABLE against the current dataset release (DOI 10.17632/fhbvmpcyy2.2).
+#
+# `python -m src.dataset_audit` found METADATA_PAIRING_STATUS = NOT_AVAILABLE: no
+# structured metadata file (csv/json/xlsx/xls) exists anywhere in the downloaded
+# archives, despite the Mendeley description mentioning soil health, humidity,
+# nutrient deficiency, and pathological report annotations. See
+# results/dataset_summary.md and results/reports/multimodal_and_ablation_not_supported.md
+# for the full explanation.
+#
+# `python -m src.train --config configs/multimodal.yaml` will refuse to run and exit
+# with a clear error pointing back here, rather than silently falling back to an
+# image-only model under a multimodal config name, or fabricating metadata to make
+# something runnable. This file exists so the pipeline is ready to go the moment a
+# future dataset version ships real, per-image-verified metadata:
+#
+#   1. Re-run `python -m src.dataset_audit --data-root <new data root>`.
+#   2. Confirm results/dataset_audit.json -> metadata_summary.metadata_pairing_status
+#      is VALID or PARTIAL (not NOT_AVAILABLE or INVALID).
+#   3. Create configs/metadata_mapping.yaml describing the ACTUAL columns present
+#      (never invent field names ahead of time).
+#   4. Update `metadata.numeric_fields` / `metadata.categorical_fields` below to match.
+#   5. Only then run `python -m src.train --config configs/multimodal.yaml`.
+
+experiment:
+  name: multimodal_resnet18_fusion
+  seed: 42
+  device: auto
+
+data:
+  audit_csv: ./results/dataset_audit.csv
+  duplicate_groups_csv: ./data/manifests/duplicate_groups.csv
+  classes_config: ./configs/classes.yaml
+  data_root: ./data/raw
+  manifests_dir: ./data/manifests
+  source_collections: [dataset_main]
+  exclude_label_conflicting_duplicate_groups: true
+  task: full_class
+
+metadata:
+  enabled: true
+  mapping_file: ./configs/metadata_mapping.yaml  # does not exist -- see status above
+  required_pairing_status: [VALID, PARTIAL]
+  # Populate only after Step 3 above confirms real columns exist:
+  numeric_fields: []
+  categorical_fields: []
+  text_fields: []  # e.g. pathological reports -- see README Section 9/13 on why raw
+                    # text must not be fed directly into the metadata MLP, and must
+                    # never be derived from the disease label itself (target leakage)
+
+splitting:
+  strategy: stratified_group
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  seed: 42
+
+image:
+  size: 224
+  normalization: imagenet
+  train_augmentation:
+    horizontal_flip: true
+    rotation_degrees: 15
+    color_jitter: 0.1
+
+model:
+  type: multimodal_fusion  # selects MultimodalFusionModel (src/models.py) instead of ImageClassifier
+  image_backbone: resnet18
+  pretrained: true
+  image_embedding_dim: 256
+  metadata_embedding_dim: 32
+  fusion_hidden_dim: 128
+  dropout: 0.3
+
+training:
+  batch_size: 64
+  epochs: 20
+  early_stopping_patience: 5
+  early_stopping_metric: val_macro_f1
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  lr_scheduler: reduce_on_plateau
+  lr_scheduler_patience: 2
+  lr_scheduler_factor: 0.5
+  class_imbalance_strategy: class_weighted_loss
+  num_workers: 4
+
+output:
+  experiments_dir: ./results/experiments
+  checkpoints_dir: ./checkpoints
+  logs_dir: ./logs

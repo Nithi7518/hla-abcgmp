@@ -1,0 +1,62 @@
+# Phase 11: cross-crop generalization.
+#
+# Protocol: for every pair of held-out crops (C(6,2) = 15 combinations), train a
+# binary healthy-vs-diseased image-only classifier on the OTHER four crops and test it
+# on every image of the two held-out crops, which the model never saw.
+#   - Training uses the existing manifests' train split restricted to the 4 seen crops.
+#   - Early stopping / LR scheduling use the val split restricted to the 4 seen crops
+#     only, so no information from the held-out crops reaches model selection.
+#   - Also reported: in-distribution performance on the seen crops' test split, so the
+#     generalization gap (seen-crop vs unseen-crop) is explicit.
+#
+# The task is binary because class names are crop-specific -- an unseen crop's
+# disease classes cannot be predicted by a model that never had them as outputs.
+#
+# Caveats recorded with the results: apple is ~97% leaf images (apple__healthy_fruit
+# was entirely excluded), so crop and organ are confounded; and banana__cordana has
+# only ~100 distinct source photos. See README Section 14.
+
+experiment:
+  name: cross_crop_resnet18_binary
+  seed: 42
+  device: auto
+
+data:
+  manifests_dir: ./data/manifests
+  data_root: ./data/raw
+  task: disease_status       # healthy vs diseased
+  crops: [apple, banana, citrus, guava, mango, papaya]
+  n_held_out: 2
+
+image:
+  size: 224
+  normalization: imagenet
+  train_augmentation:
+    horizontal_flip: true
+    rotation_degrees: 15
+    color_jitter: 0.1
+
+model:
+  backbone: resnet18
+  pretrained: true
+  freeze_backbone: true
+  unfreeze_last_n_blocks: 1
+  dropout: 0.3
+
+training:
+  batch_size: 64
+  epochs: 10
+  early_stopping_patience: 3
+  early_stopping_metric: val_macro_f1
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  lr_scheduler: reduce_on_plateau
+  lr_scheduler_patience: 1
+  lr_scheduler_factor: 0.5
+  class_imbalance_strategy: class_weighted_loss
+  num_workers: 0
+
+output:
+  results_dir: ./results/cross_crop
+  checkpoints_dir: ./checkpoints/cross_crop

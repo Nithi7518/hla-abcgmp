@@ -1,0 +1,14 @@
+{
+  "threshold": 0.75,
+  "n_images": 8936,
+  "similar_pairs_linked": 4337,
+  "n_groups": 6171,
+  "groups_with_2plus_images": 1533,
+  "images_in_2plus_groups": 4298,
+  "largest_group": 60,
+  "group_size_quantiles": {
+    "0.5": 1.0,
+    "0.9": 2.0,
+    "0.99": 5.0
+  }
+}

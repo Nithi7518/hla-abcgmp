@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supported Crops, Audit &amp; Architecture — PhytoGuard AI</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B2B1E'/%3E%3Cpath d='M8 23c0-9 6-15 16-15 0 10-6 15-15 15z' fill='%2334D399'/%3E%3Cpath d='M8 23c5-5 8-9 13-12' stroke='%230B2B1E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Website Navigation -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="/" class="brand">
+          <div class="logo-wrap">
+            <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="9" fill="#10B981"/>
+              <path d="M8 23c0-8.5 5.5-14 15-15 0 9.5-5.5 15-14 15z" fill="#06281B"/>
+              <path d="M8 23c4.5-5 7.5-8.5 12-11.5" stroke="#34D399" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PhytoGuard <span class="brand-accent">AI</span></span>
+            <span class="brand-sub">ABCGMP Multimodal Pathology Platform</span>
+          </div>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/diagnose" class="nav-link">Diagnostic Studio</a>
+          <a href="/compare" class="nav-link">Model Comparison</a>
+          <a href="/crops" class="nav-link active">Crops &amp; Architecture</a>
+        </nav>
+
+        <div class="header-badges">
+          <span class="pill status-pill"><span class="status-dot"></span> 8,936 Clean Images · 6,171 Groups</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-Page Navigation Tabs (No Scrolling) -->
+    <div class="subnav-bar">
+      <div class="wrap subnav-inner">
+        <div class="step-tabs" role="tablist">
+          <button type="button" class="step-tab active" data-kstep="1">
+            <span class="tab-num">1</span> 6 Supported Crops
+          </button>
+          <button type="button" class="step-tab" data-kstep="2">
+            <span class="tab-num">2</span> HLA-Net Architecture Blueprint
+          </button>
+          <button type="button" class="step-tab" data-kstep="3">
+            <span class="tab-num">3</span> Dataset Split &amp; Contamination Audit
+          </button>
+          <button type="button" class="step-tab" data-kstep="4">
+            <span class="tab-num">4</span> 23-Class Grad-CAM Atlas
+          </button>
+        </div>
+        <a href="/diagnose" class="btn btn-primary btn-sm">Launch Scanner →</a>
+      </div>
+    </div>
+
+    <!-- Main Non-Scrolling Page Stage -->
+    <main class="wrap page-stage">
+      <!-- CROPS PAGE 1: The 6 ABCGMP Crops -->
+      <section class="step-view active" id="kstep-1">
+        <div class="crops-grid">
+          <div class="crop-card">
+            <div class="crop-card-top">
+              <span class="crop-emoji">🍎</span>
+              <span class="crop-count">3 Realized Classes</span>
+            </div>
+            <h3>Apple <small>Malus domestica</small></h3>
+            <ul class="crop-classes">
+              <li><span class="dot-disease"></span> <strong>apple__black_rot</strong> (Foliar frog-eye leaf spot)</li>
+              <li><span class="dot-disease"></span> <strong>apple__disease_fruit</strong> (Fruit rot &amp; scab lesions)</li>
+              <li><span class="dot-healthy"></span> <strong>apple__healthy_leaf</strong> (Healthy foliage)</li>
+            </ul>
+            <a href="/diagnose?sample=apple__black_rot|0" class="btn btn-ghost btn-sm btn-block">Diagnose Apple Specimen →</a>
+          </div>
+
+          <div class="crop-card">
+            <div class="crop-card-top">
+              <span class="crop-emoji">🍌</span>
+              <span class="crop-count">4 Realized Classes</span>
+            </div>
+            <h3>Banana <small>Musa spp.</small></h3>
+            <ul class="crop-classes">
+              <li><span class="dot-disease"></span> <strong>banana__cordana</strong> (Cordana leaf spot)</li>
+              <li><span class="dot-disease"></span> <strong>banana__disease_fruit</strong> (Anthracnose / crown rot)</li>
+              <li><span class="dot-healthy"></span> <strong>banana__healthy_leaf</strong> &amp; <strong>healthy_fruit</strong></li>
+            </ul>
+            <a href="/diagnose?sample=banana__cordana|0" class="btn btn-ghost btn-sm btn-block">Diagnose Banana Specimen →</a>
+          </div>
+
+          <div class="crop-card">
+            <div class="crop-card-top">
+              <span class="crop-emoji">🍊</span>
+              <span class="crop-count">4 Realized Classes</span>
+            </div>
+            <h3>Citrus <small>Citrus spp.</small></h3>
+            <ul class="crop-classes">
+              <li><span class="dot-disease"></span> <strong>citrus__canker_leaf</strong> (Xanthomonas foliar canker)</li>
+              <li><span class="dot-disease"></span> <strong>citrus__disease_fruit</strong> (Pericarp canker lesions)</li>
+              <li><span class="dot-healthy"></span> <strong>citrus__healthy_leaf</strong> &amp; <strong>healthy_fruit</strong></li>
+            </ul>
+            <a href="/diagnose?sample=citrus__canker_leaf|0" class="btn btn-ghost btn-sm btn-block">Diagnose Citrus Specimen →</a>
+          </div>
+
+          <div class="crop-card">
+            <div class="crop-card-top">
+              <span class="crop-emoji">🍐</span>
+              <span class="crop-count">4 Realized Classes</span>
+            </div>
+            <h3>Guava <small>Psidium guajava</small></h3>
+            <ul class="crop-classes">
+              <li><span class="dot-disease"></span> <strong>guava__red_rust</strong> (Cephaleuros algal leaf spot)</li>
+              <li><span class="dot-disease"></span> <strong>guava__disease_fruit</strong> (Fruit anthracnose / rot)</li>
+              <li><span class="dot-healthy"></span> <strong>guava__healthy_leaf</strong> &amp; <strong>healthy_fruit</strong></li>
+            </ul>
+            <a href="/diagnose?sample=guava__red_rust|0" class="btn btn-ghost btn-sm btn-block">Diagnose Guava Specimen →</a>
+          </div>
+
+          <div class="crop-card">
+            <div class="crop-card-top">
+              <span class="crop-emoji">🥭</span>
+              <span class="crop-count">4 Realized Classes</span>
+            </div>
+            <h3>Mango <small>Mangifera indica</small></h3>
+            <ul class="crop-classes">
+              <li><span class="dot-disease"></span> <strong>mango__bacterial_canker</strong> (Angular necrotic lesions)</li>
+              <li><span class="dot-disease"></span> <strong>mango__disease_fruit</strong> (Anthracnose / stem-end rot)</li>
+              <li><span class="dot-healthy"></span> <strong>mango__healthy_leaf</strong> &amp; <strong>healthy_fruit</strong></li>
+            </ul>
+            <a href="/diagnose?sample=mango__bacterial_canker|0" class="btn btn-ghost btn-sm btn-block">Diagnose Mango Specimen →</a>
+          </div>
+
+          <div class="crop-card">
+            <div class="crop-card-top">
+              <span class="crop-emoji">🍈</span>
+              <span class="crop-count">4 Realized Classes</span>
+            </div>
+            <h3>Papaya <small>Carica papaya</small></h3>
+            <ul class="crop-classes">
+              <li><span class="dot-disease"></span> <strong>papaya__ring_spot</strong> (PRSV concentric rings &amp; mosaic)</li>
+              <li><span class="dot-disease"></span> <strong>papaya__disease_fruit</strong> (Fruit rot / anthracnose)</li>
+              <li><span class="dot-healthy"></span> <strong>papaya__healthy_leaf</strong> &amp; <strong>healthy_fruit</strong></li>
+            </ul>
+            <a href="/diagnose?sample=papaya__ring_spot|0" class="btn btn-ghost btn-sm btn-block">Diagnose Papaya Specimen →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CROPS PAGE 2: Layer-by-Layer HLA-Net Architecture Blueprint -->
+      <section class="step-view" id="kstep-2">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">From-Scratch Neural Architecture (`src/hla_net.py` &amp; `src/models.py`)</span>
+              <h2>Layer-by-Layer Multimodal HLA-Net Blueprint (1,711,863 Parameters)</h2>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Stage / Module</th>
+                  <th>Internal Layer Operations</th>
+                  <th>Input Shape</th>
+                  <th>Output Shape</th>
+                  <th>Pathology Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Stage 0: <code>MSRStem</code></strong></td>
+                  <td>Parallel $3\times 3$ (stride 2) + $5\times 5$ (stride 2) convs $\to$ Concat $\to$ $1\times 1$ Conv + BN + SiLU $\to$ $3\times 3$ MaxPool</td>
+                  <td>$(B, 3, 224, 224)$</td>
+                  <td>$(B, 64, 56, 56)$</td>
+                  <td>Preserves fine spore boundaries &amp; wider chlorotic halos simultaneously</td>
+                </tr>
+                <tr>
+                  <td><strong>Stage 1: <code>layer1</code></strong></td>
+                  <td>$2\times$ <code>DMSLBlock(64 -> 64, stride=1)</code> with parallel depthwise dilations $d \in \{1, 2, 4\}$ + <code>CoordinateLesionAttention</code></td>
+                  <td>$(B, 64, 56, 56)$</td>
+                  <td>$(B, 64, 56, 56)$</td>
+                  <td>Extracts micro-scale pinpricks ($d=1$) &amp; initial lesion margins</td>
+                </tr>
+                <tr>
+                  <td><strong>Stage 2: <code>layer2</code></strong></td>
+                  <td>$2\times$ <code>DMSLBlock(64 -> 128, stride=2)</code> with parallel dilations $d \in \{1, 2, 4\}$ + <code>CoordinateLesionAttention</code></td>
+                  <td>$(B, 64, 56, 56)$</td>
+                  <td>$(B, 128, 28, 28)$</td>
+                  <td>Captures meso-scale ring spots ($d=2$) and venation boundaries</td>
+                </tr>
+                <tr>
+                  <td><strong>Stage 3: <code>layer3</code></strong></td>
+                  <td>$3\times$ <code>DMSLBlock(128 -> 256, stride=2)</code> with parallel dilations $d \in \{1, 2, 4\}$ + <code>CoordinateLesionAttention</code> + DropPath</td>
+                  <td>$(B, 128, 28, 28)$</td>
+                  <td>$(B, 256, 14, 14)$</td>
+                  <td>Models mid-level lesion geometry &amp; suppresses background shortcuts</td>
+                </tr>
+                <tr>
+                  <td><strong>Stage 4: <code>layer4</code></strong></td>
+                  <td>$2\times$ <code>DMSLBlock(256 -> 512, stride=2)</code> $\to$ Global <code>AdaptiveAvgPool2d(1,1)</code> (Grad-CAM &amp; OOD hook here)</td>
+                  <td>$(B, 256, 14, 14)$</td>
+                  <td>$(B, 512)$</td>
+                  <td>High-level semantic pathology representation $\mathbf{v}_{\text{raw}}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Stream 1 Projection</strong></td>
+                  <td><code>Linear(512 -> 256)</code> $\to$ <code>BatchNorm1d(256)</code> $\to$ <code>SiLU</code></td>
+                  <td>$(B, 512)$</td>
+                  <td>$(B, 256)$</td>
+                  <td>Compact visual embedding $\mathbf{v}$</td>
+                </tr>
+                <tr>
+                  <td><strong>Stream 2: <code>MetadataMLP</code></strong></td>
+                  <td><code>Linear(12 -> 64)</code> + BN + SiLU + Dropout(0.3) $\to$ <code>Linear(64 -> 64)</code> + BN + SiLU</td>
+                  <td>$(B, 12)$</td>
+                  <td>$(B, 64)$</td>
+                  <td>Encodes 6-crop, 2-organ, fruiting stage &amp; agro-climatic priors $\mathbf{m}$</td>
+                </tr>
+                <tr class="row-highlight">
+                  <td><strong>Stream 3: <code>GatedFusion</code></strong></td>
+                  <td>Aligns $\mathbf{v}_h, \mathbf{m}_h \in \mathbb{R}^{128}$, computes gate $\mathbf{g} = \sigma(\mathbf{W}_g[\mathbf{v}_h \Vert \mathbf{m}_h])$, modulates $[\mathbf{v}_h \odot \mathbf{g} \Vert \mathbf{m}_h \odot (1-\mathbf{g})] \to$ <code>Linear(256->128)</code> $\to$ <code>Linear(128->23)</code></td>
+                  <td>$(B, 256) + (B, 64)$</td>
+                  <td>$(B, 23)$</td>
+                  <td>Dynamically weights vision vs. context; outputs 23 class logits</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CROPS PAGE 3: Authentic Dataset Split & Contamination Audit -->
+      <section class="step-view" id="kstep-3">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Authentic Manifest Audit (`data/manifests/split_report.json`)</span>
+              <h2>Per-Class Split Distribution &amp; Duplicate Contamination Audit</h2>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Class Label</th>
+                  <th>Train ($6,248$)</th>
+                  <th>Val ($1,347$)</th>
+                  <th>Test ($1,341$)</th>
+                  <th>Total Clean Retained</th>
+                  <th>Raw Candidates</th>
+                  <th>Excluded (Label Conflict)</th>
+                  <th>Contamination Rate</th>
+                </tr>
+              </thead>
+              <tbody id="split-audit-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CROPS PAGE 4: 23-Class Grad-CAM Atlas -->
+      <section class="step-view" id="kstep-4">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Visual Explainability Grid (`results/gradcam/gradcam_all_classes.png`)</span>
+              <h2>Grad-CAM Spatial Activation Atlas Across All 23 Classes</h2>
+            </div>
+          </div>
+          <figure class="artifact-box" style="flex:1;">
+            <img src="/results/gradcam/gradcam_all_classes.png" alt="Grad-CAM heatmaps across all 23 classes">
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Page-Wise Navigation Bar -->
+    <footer class="pager-bar">
+      <div class="wrap pager-inner">
+        <span class="pager-info" id="crops-indicator">Crops &amp; Architecture Page 1 of 4 · The 6 ABCGMP Horticultural Crops</span>
+        <div class="pager-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="k-prev-btn" disabled>← Previous View</button>
+          <button type="button" class="btn btn-primary btn-sm" id="k-next-btn">Next View →</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      const TITLES = {
+        1: "Crops & Architecture Page 1 of 4 · The 6 ABCGMP Horticultural Crops",
+        2: "Crops & Architecture Page 2 of 4 · Layer-by-Layer Multimodal HLA-Net Blueprint",
+        3: "Crops & Architecture Page 3 of 4 · Per-Class Split & Contamination Audit",
+        4: "Crops & Architecture Page 4 of 4 · 23-Class Grad-CAM Activation Atlas",
+      };
+      let kStep = 1;
+      function goToKStep(num) {
+        kStep = Math.max(1, Math.min(4, Number(num)));
+        document.querySelectorAll(".step-view").forEach((el, idx) => {
+          el.classList.toggle("active", idx + 1 === kStep);
+        });
+        document.querySelectorAll("[data-kstep]").forEach((tab) => {
+          tab.classList.toggle("active", Number(tab.getAttribute("data-kstep")) === kStep);
+        });
+        document.getElementById("crops-indicator").textContent = TITLES[kStep] || "";
+        document.getElementById("k-prev-btn").disabled = kStep <= 1;
+        document.getElementById("k-next-btn").disabled = kStep >= 4;
+      }
+
+      document.querySelectorAll("[data-kstep]").forEach((tab) => {
+        tab.addEventListener("click", () => goToKStep(Number(tab.getAttribute("data-kstep"))));
+      });
+      document.getElementById("k-prev-btn").addEventListener("click", () => { if (kStep > 1) goToKStep(kStep - 1); });
+      document.getElementById("k-next-btn").addEventListener("click", () => { if (kStep < 4) goToKStep(kStep + 1); });
+
+      fetch("/api/benchmarks").then((r) => r.json()).then((data) => {
+        const sr = data.split_report || {};
+        const dist = sr.label_distribution_per_split || {};
+        const trainMap = dist.train || {};
+        const valMap = dist.val || {};
+        const testMap = dist.test || {};
+        const contam = sr.per_label_contamination || {};
+
+        const allLabels = Object.keys(contam).sort();
+        const tbody = document.getElementById("split-audit-body");
+        tbody.innerHTML = allLabels.map((lbl) => {
+          const c = contam[lbl] || {};
+          const tr = trainMap[lbl] || 0;
+          const va = valMap[lbl] || 0;
+          const te = testMap[lbl] || 0;
+          const tot = tr + va + te;
+          const rate = ((c.contamination_fraction || 0) * 100).toFixed(1) + "%";
+          const isExcludedAll = tot === 0;
+          return `<tr class="${isExcludedAll ? "row-highlight" : ""}">
+            <td><strong>${lbl}</strong> ${isExcludedAll ? '<span class="organ-tag fruit">100% Contaminated · Excluded</span>' : ""}</td>
+            <td>${tr}</td>
+            <td>${va}</td>
+            <td><strong>${te}</strong></td>
+            <td><strong>${tot}</strong></td>
+            <td>${c.n_candidate_images ?? "—"}</td>
+            <td>${c.n_excluded_label_conflict ?? 0}</td>
+            <td><span class="delta-badge ${(c.contamination_fraction || 0) > 0.2 ? "delta-neg" : "delta-neutral"}">${rate}</span></td>
+          </tr>`;
+        }).join("");
+      }).catch(console.error);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+{
+  "run_id": "2026-10-12T110157Z_hlanet_from_scratch_seed42",
+  "generated_at_utc": "2026-10-12T11:14:05.239512+00:00",
+  "config_path": "configs/hlanet.yaml",
+  "seed": 42,
+  "device": "cpu",
+  "backbone": "hla_net",
+  "task": "full_class",
+  "class_imbalance_strategy": "class_weighted_loss",
+  "n_train": 6248,
+  "n_val": 1347,
+  "n_test": 1341,
+  "n_classes": 23,
+  "label_names": [
+    "apple__black_rot",
+    "apple__disease_fruit",
+    "apple__healthy_leaf",
+    "banana__cordana",
+    "banana__disease_fruit",
+    "banana__healthy_fruit",
+    "banana__healthy_leaf",
+    "citrus__canker_leaf",
+    "citrus__disease_fruit",
+    "citrus__healthy_fruit",
+    "citrus__healthy_leaf",
+    "guava__disease_fruit",
+    "guava__healthy_fruit",
+    "guava__healthy_leaf",
+    "guava__red_rust",
+    "mango__bacterial_canker",
+    "mango__disease_fruit",
+    "mango__healthy_fruit",
+    "mango__healthy_leaf",
+    "papaya__disease_fruit",
+    "papaya__healthy_fruit",
+    "papaya__healthy_leaf",
+    "papaya__ring_spot"
+  ],
+  "best_epoch": 1,
+  "epochs_run": 1,
+  "epochs_configured": 1,
+  "best_val_metrics": {
+    "accuracy": 0.7008,
+    "balanced_accuracy": 0.4391,
+    "macro_precision": 0.4582,
+    "macro_recall": 0.4391,
+    "macro_f1": 0.3978,
+    "weighted_precision": 0.7129,
+    "weighted_recall": 0.7008,
+    "weighted_f1": 0.6819,
+    "per_class": {
+      "apple__black_rot": {
+        "precision": 0.9583,
+        "recall": 0.8519,
+        "f1": 0.902,
+        "support": 297
+      },
+      "apple__disease_fruit": {
+        "precision": 0.2353,
+        "recall": 0.2105,
+        "f1": 0.2222,
+        "support": 19
+      },
+      "apple__healthy_leaf": {
+        "precision": 0.8475,
+        "recall": 0.9601,
+        "f1": 0.9003,
+        "support": 301
+      },
+      "banana__cordana": {
+        "precision": 0.5532,
+        "recall": 0.8667,
+        "f1": 0.6753,
+        "support": 60
+      },
+      "banana__disease_fruit": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 11
+      },
+      "banana__healthy_fruit": {
+        "precision": 0.2063,
+        "recall": 0.65,
+        "f1": 0.3133,
+        "support": 20
+      },
+      "banana__healthy_leaf": {
+        "precision": 0.8,
+        "recall": 0.75,
+        "f1": 0.7742,
+        "support": 80
+      },
+      "citrus__canker_leaf": {
+        "precision": 1.0,
+        "recall": 0.2903,
+        "f1": 0.45,
+        "support": 31
+      },
+      "citrus__disease_fruit": {
+        "precision": 0.25,
+        "recall": 0.0833,
+        "f1": 0.125,
+        "support": 24
+      },
+      "citrus__healthy_fruit": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 25
+      },
+      "citrus__healthy_leaf": {
+        "precision": 1.0,
+        "recall": 0.0385,
+        "f1": 0.0741,
+        "support": 26
+      },
+      "guava__disease_fruit": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 24
+      },
+      "guava__healthy_fruit": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 8
+      },
+      "guava__healthy_leaf": {
+        "precision": 0.4872,
+        "recall": 0.8261,
+        "f1": 0.6129,
+        "support": 23
+      },
+      "guava__red_rust": {
+        "precision": 0.1562,
+        "recall": 0.7143,
+        "f1": 0.2564,
+        "support": 14
+      },
+      "mango__bacterial_canker": {
+        "precision": 0.6977,
+        "recall": 0.9836,
+        "f1": 0.8163,
+        "support": 61
+      },
+      "mango__disease_fruit": {
+        "precision": 0.2703,
+        "recall": 0.3125,
+        "f1": 0.2899,
+        "support": 32
+      },
+      "mango__healthy_fruit": {
+        "precision": 0.3333,
+        "recall": 0.1346,
+        "f1": 0.1918,
+        "support": 52
+      },
+      "mango__healthy_leaf": {
+        "precision": 0.9756,
+        "recall": 0.8696,
+        "f1": 0.9195,
+        "support": 46
+      },
+      "papaya__disease_fruit": {
+        "precision": 0.0909,
+        "recall": 0.1579,
+        "f1": 0.1154,
+        "support": 19
+      },
+      "papaya__healthy_fruit": {
+        "precision": 0.1667,
+        "recall": 0.0952,
+        "f1": 0.1212,
+        "support": 21
+      },
+      "papaya__healthy_leaf": {
+        "precision": 0.6875,
+        "recall": 0.4889,
+        "f1": 0.5714,
+        "support": 45
+      },
+      "papaya__ring_spot": {
+        "precision": 0.8224,
+        "recall": 0.8148,
+        "f1": 0.8186,
+        "support": 108
+      }
+    },
+    "n_samples": 1347,
+    "loss": 1.0447013937462324
+  },
+  "checkpoint_path": "checkpoints\\2026-10-12T110157Z_hlanet_from_scratch_seed42.pt",
+  "total_training_seconds": 726.5,
+  "git_commit": null,
+  "package_versions": {
+    "python": "3.13.2",
+    "torch": "2.9.0+cpu",
+    "torchvision": "0.24.0+cpu",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "sklearn": "1.6.1",
+    "PIL": "11.1.0",
+    "scipy": "1.15.2"
+  },
+  "hardware_info": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "machine": "AMD64",
+    "cuda_available": false,
+    "mps_available": false
+  }
+}

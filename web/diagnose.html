@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diagnostic Studio — PhytoGuard AI</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B2B1E'/%3E%3Cpath d='M8 23c0-9 6-15 16-15 0 10-6 15-15 15z' fill='%2334D399'/%3E%3Cpath d='M8 23c5-5 8-9 13-12' stroke='%230B2B1E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Website Navigation -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="/" class="brand">
+          <div class="logo-wrap">
+            <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="9" fill="#10B981"/>
+              <path d="M8 23c0-8.5 5.5-14 15-15 0 9.5-5.5 15-14 15z" fill="#06281B"/>
+              <path d="M8 23c4.5-5 7.5-8.5 12-11.5" stroke="#34D399" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PhytoGuard <span class="brand-accent">AI</span></span>
+            <span class="brand-sub">ABCGMP Multimodal Pathology Platform</span>
+          </div>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/diagnose" class="nav-link active">Diagnostic Studio</a>
+          <a href="/compare" class="nav-link">Model Comparison</a>
+          <a href="/crops" class="nav-link">Crops &amp; Architecture</a>
+        </nav>
+
+        <div class="header-badges">
+          <span class="pill status-pill"><span class="status-dot"></span> Engine: <span id="engine">Ready</span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page-Wise Step Switcher Bar -->
+    <div class="subnav-bar">
+      <div class="wrap subnav-inner">
+        <div class="step-tabs" role="tablist">
+          <button type="button" class="step-tab active" data-target="1">
+            <span class="tab-num">1</span> Select Specimen
+          </button>
+          <button type="button" class="step-tab" data-target="2" id="tab-2" disabled>
+            <span class="tab-num">2</span> Diagnosis &amp; Grad-CAM
+          </button>
+          <button type="button" class="step-tab" data-target="3" id="tab-3" disabled>
+            <span class="tab-num">3</span> Refine Symptoms
+          </button>
+          <button type="button" class="step-tab" data-target="4" id="tab-4" disabled>
+            <span class="tab-num">4</span> Sourced Treatment
+          </button>
+          <button type="button" class="step-tab" data-target="5" id="tab-5" disabled>
+            <span class="tab-num">5</span> AI Pathologist Chat
+          </button>
+        </div>
+        <button type="button" class="btn btn-ghost btn-sm" id="reset-scan-btn" hidden>↺ New Specimen Scan</button>
+      </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-overlay" hidden aria-live="polite">
+      <div class="loading-box">
+        <div class="spinner"></div>
+        <div>
+          <strong style="display:block; color:var(--emerald-900);">Running Multimodal HLA-Net &amp; Grad-CAM…</strong>
+          <span style="font-size:0.84rem; color:var(--text-muted);">Computing spatial lesion activations and calibrated probabilities</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Non-Scrolling Page Stage -->
+    <main class="wrap page-stage">
+      <!-- STEP PAGE 1: Upload or Choose Sample -->
+      <section class="step-view active" id="step-1">
+        <div class="studio-grid">
+          <div class="studio-panel">
+            <div>
+              <div class="panel-header">
+                <span class="panel-badge">Option A</span>
+                <h2>Upload Specimen Photo</h2>
+              </div>
+              <p class="hint" style="margin-bottom:10px;">Upload any leaf or fruit photo from your device or the web (JPG/PNG up to 10 MB).</p>
+            </div>
+
+            <label class="dropzone" id="dropzone" for="file">
+              <input type="file" id="file" accept="image/jpeg,image/png" hidden>
+              <div class="dropzone-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V5m0 0-4 4m4-4 4 4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <strong>Drop a leaf or fruit image here</strong>
+              <span>or <u class="browse-link">click to browse files</u></span>
+            </label>
+
+            <div class="context-bar">
+              <div class="context-bar-title">
+                <span>Agronomic Context Priors <small style="font-weight:400; color:var(--text-muted);">(Optional — leave on Auto for blind uploads)</small></span>
+              </div>
+              <div class="context-controls">
+                <div class="control-group">
+                  <label for="user-crop">Host Crop</label>
+                  <select id="user-crop">
+                    <option value="">Auto-Detect / Unknown</option>
+                    <option value="apple">🍎 Apple</option>
+                    <option value="banana">🍌 Banana</option>
+                    <option value="citrus">🍊 Citrus</option>
+                    <option value="guava">🍐 Guava</option>
+                    <option value="mango">🥭 Mango</option>
+                    <option value="papaya">🍈 Papaya</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="user-organ">Plant Organ</label>
+                  <select id="user-organ">
+                    <option value="">Auto-Detect / Unknown</option>
+                    <option value="leaf">🍃 Leaf Blade</option>
+                    <option value="fruit">🍎 Fruit</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="studio-panel">
+            <div>
+              <div class="panel-header">
+                <span class="panel-badge secondary">Option B</span>
+                <h2>Verified Dataset Explorer</h2>
+              </div>
+              <p class="hint" style="margin-bottom:14px;">Select any of the 23 benchmark classes from the held-out test split (`test.csv`) to run a live diagnosis.</p>
+
+              <div class="sample-box">
+                <label for="sample" style="font-weight:600; font-size:0.84rem;">Select a Test Specimen (23 Classes)</label>
+                <select id="sample"><option value="">Choose a crop &amp; condition…</option></select>
+                <button class="btn btn-primary btn-block" id="sample-go" type="button" disabled>
+                  Run Diagnostic Analysis →
+                </button>
+              </div>
+            </div>
+
+            <div class="quick-samples">
+              <span class="quick-label">One-Click Quick Presets:</span>
+              <div class="quick-chips">
+                <button type="button" class="q-chip" data-sample="apple__black_rot|0">Apple Black Rot</button>
+                <button type="button" class="q-chip" data-sample="mango__bacterial_canker|0">Mango Canker</button>
+                <button type="button" class="q-chip" data-sample="citrus__canker_leaf|0">Citrus Canker</button>
+                <button type="button" class="q-chip" data-sample="papaya__ring_spot|0">Papaya Ring Spot</button>
+                <button type="button" class="q-chip" data-sample="guava__red_rust|0">Guava Red Rust</button>
+                <button type="button" class="q-chip" data-sample="banana__cordana|0">Banana Cordana</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="error" id="start-error" role="alert" hidden></p>
+      </section>
+
+      <!-- STEP PAGE 2: Visual Verdict & Grad-CAM -->
+      <section class="step-view" id="step-2">
+        <div class="card">
+          <div id="sample-banner" class="sample-banner" hidden></div>
+
+          <div class="report-main-grid">
+            <div class="images">
+              <figure class="specimen-frame">
+                <div class="frame-badge">Input RGB Specimen</div>
+                <img id="img-original" alt="Uploaded plant specimen">
+                <figcaption>Original Uploaded Photo</figcaption>
+              </figure>
+              <figure class="specimen-frame">
+                <div class="frame-badge cam-badge">Grad-CAM Layer-4 Activation</div>
+                <img id="img-overlay" alt="Grad-CAM heatmap" hidden>
+                <div id="no-overlay" class="no-overlay" hidden>No heatmap: confidence below diagnosis threshold.</div>
+                <figcaption>Where HLA-Net Looked (Lesion Attention)</figcaption>
+              </figure>
+            </div>
+
+            <div class="verdict-column">
+              <div class="verdict-box">
+                <div class="verdict-header">
+                  <span class="verdict-label">Diagnostic Confidence Tier</span>
+                  <span id="tier-badge" class="badge"></span>
+                </div>
+                <p id="message" class="message"></p>
+                <div id="notes"></div>
+              </div>
+
+              <div class="ranking-box">
+                <div class="ranking-header">
+                  <h3 style="font-size:0.98rem;">Top-3 Calibrated Probabilities ($T = 1.25$)</h3>
+                </div>
+                <ul id="ranking" class="ranking"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP PAGE 3: Refine Symptoms (Bayesian Q&A) -->
+      <section class="step-view" id="step-3">
+        <div class="card" id="questions-card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Bayesian Evidence Updating</span>
+              <h2>Refine Diagnosis with Field Observations</h2>
+            </div>
+            <button class="btn btn-primary btn-sm" id="update" type="button">Apply Observations &amp; Re-Rank</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1.35fr 1fr; gap:20px; flex:1; min-height:0; overflow:hidden;">
+            <form id="questions-form" class="questions-grid scroll-box" style="grid-template-columns:1fr 1fr; align-content:start;"></form>
+
+            <div class="ranking-box scroll-box" style="display:flex; flex-direction:column; gap:12px;">
+              <h3 style="font-size:0.96rem;">Updated Ranking</h3>
+              <ul id="ranking-step3" class="ranking"></ul>
+              <div id="evidence" hidden style="border-top:1px solid var(--border-light); padding-top:10px;">
+                <h4 style="font-size:0.84rem; color:var(--emerald-900); margin-bottom:6px;">How Your Answers Shifted the Ranking:</h4>
+                <ul id="evidence-list" class="plain" style="font-size:0.8rem;"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP PAGE 4: Sourced Treatment Advice -->
+      <section class="step-view" id="step-4">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Extension Knowledge Base</span>
+              <h2>Sourced Agronomic Treatment &amp; Management</h2>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="advice-btn" type="button">Refresh Sourced Protocol</button>
+          </div>
+          <div id="advice" class="scroll-box" style="flex:1; font-size:0.92rem; line-height:1.6;"></div>
+        </div>
+      </section>
+
+      <!-- STEP PAGE 5: AI Plant Pathologist Chat -->
+      <section class="step-view" id="step-5">
+        <div class="card">
+          <div class="card-header-flex" style="margin-bottom:6px;">
+            <div>
+              <span class="section-tag">Grounded RAG Assistant</span>
+              <h2>Ask the AI Plant Pathologist</h2>
+            </div>
+            <div class="Quick-prompts" style="margin:0;">
+              <button type="button" class="prompt-pill" data-q="What are the main symptoms to look for?">Symptoms?</button>
+              <button type="button" class="prompt-pill" data-q="How does this disease spread between plants?">How does it spread?</button>
+              <button type="button" class="prompt-pill" data-q="What cultural or organic management practices are recommended?">Management &amp; Control?</button>
+            </div>
+          </div>
+
+          <div id="chat-log" class="chat-log" aria-live="polite"></div>
+          <form id="chat-form" class="chat-form">
+            <input id="chat-input" type="text" maxlength="500" placeholder="Ask about symptoms, disease cycle, sanitation, or control…" autocomplete="off">
+            <button class="btn btn-primary" type="submit">Ask</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Page-Wise Step Navigation Bar -->
+    <footer class="pager-bar">
+      <div class="wrap pager-inner">
+        <span class="pager-info" id="step-indicator">Step 1 of 5 · Select or Upload a Specimen</span>
+        <div class="pager-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="prev-step-btn" disabled>← Previous Step</button>
+          <button type="button" class="btn btn-primary btn-sm" id="next-step-btn" disabled>Next Step →</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

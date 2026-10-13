@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Comparison &amp; Benchmarks — PhytoGuard AI</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230B2B1E'/%3E%3Cpath d='M8 23c0-9 6-15 16-15 0 10-6 15-15 15z' fill='%2334D399'/%3E%3Cpath d='M8 23c5-5 8-9 13-12' stroke='%230B2B1E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Website Navigation -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a href="/" class="brand">
+          <div class="logo-wrap">
+            <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+              <rect width="32" height="32" rx="9" fill="#10B981"/>
+              <path d="M8 23c0-8.5 5.5-14 15-15 0 9.5-5.5 15-14 15z" fill="#06281B"/>
+              <path d="M8 23c4.5-5 7.5-8.5 12-11.5" stroke="#34D399" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PhytoGuard <span class="brand-accent">AI</span></span>
+            <span class="brand-sub">ABCGMP Multimodal Pathology Platform</span>
+          </div>
+        </a>
+
+        <nav class="main-nav" aria-label="Primary Navigation">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/diagnose" class="nav-link">Diagnostic Studio</a>
+          <a href="/compare" class="nav-link active">Model Comparison</a>
+          <a href="/crops" class="nav-link">Crops &amp; Architecture</a>
+        </nav>
+
+        <div class="header-badges">
+          <span class="pill status-pill"><span class="status-dot"></span> 100% Authentic Test Data</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-Page Navigation Tabs (No Scrolling) -->
+    <div class="subnav-bar">
+      <div class="wrap subnav-inner">
+        <div class="step-tabs" role="tablist">
+          <button type="button" class="step-tab active" data-cstep="1">
+            <span class="tab-num">1</span> Leaderboard &amp; KPIs
+          </button>
+          <button type="button" class="step-tab" data-cstep="2">
+            <span class="tab-num">2</span> Model Contrast Matrix
+          </button>
+          <button type="button" class="step-tab" data-cstep="3">
+            <span class="tab-num">3</span> 23-Class Head-to-Head
+          </button>
+          <button type="button" class="step-tab" data-cstep="4">
+            <span class="tab-num">4</span> Confusion Matrix &amp; Curves
+          </button>
+          <button type="button" class="step-tab" data-cstep="5">
+            <span class="tab-num">5</span> Epoch Logs &amp; Cross-Crop
+          </button>
+        </div>
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:600;">Held-Out Test Split: N = 1,341</span>
+      </div>
+    </div>
+
+    <!-- Main Non-Scrolling Page Stage -->
+    <main class="wrap page-stage">
+      <!-- COMPARE PAGE 1: Leaderboard & KPIs -->
+      <section class="step-view active" id="cstep-1">
+        <div class="kpi-grid">
+          <div class="kpi-card highlight">
+            <span class="kpi-tag">Best Overall · Proposed</span>
+            <h3>Multimodal HLA-Net + Gated Fusion</h3>
+            <div class="kpi-big">96.35% <small>Test Acc</small></div>
+            <div class="kpi-submetrics">
+              <span><strong>91.93%</strong> Bal Acc</span>
+              <span><strong>91.69%</strong> Macro F1</span>
+              <span><strong>1.71M</strong> Params</span>
+            </div>
+            <p class="kpi-note">Run: <code>2026-10-12T183341Z</code> · 95% CI: [95.30%, 97.32%]</p>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-tag amber">Best Pretrained Transfer Baseline</span>
+            <h3>ResNet-18 Transfer (layer3+4 Unfrozen)</h3>
+            <div class="kpi-big">95.23% <small>Test Acc (Seed 42)</small></div>
+            <div class="kpi-submetrics">
+              <span><strong>89.08%</strong> Bal Acc</span>
+              <span><strong>88.77%</strong> Macro F1</span>
+              <span><strong>11.19M</strong> Params</span>
+            </div>
+            <p class="kpi-note">3-Seed Mean (42, 1, 2): Acc <code>94.86% ± 0.34%</code> · Macro F1 <code>87.94% ± 0.85%</code></p>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-tag">Best Unimodal Custom Scratch</span>
+            <h3>Unimodal HLA-Net (Balanced Focal)</h3>
+            <div class="kpi-big">85.16% <small>Test Acc</small></div>
+            <div class="kpi-submetrics">
+              <span><strong>69.11%</strong> Bal Acc</span>
+              <span><strong>68.87%</strong> Macro F1</span>
+              <span><strong>1.54M</strong> Params</span>
+            </div>
+            <p class="kpi-note">Run: <code>2026-10-12T164550Z</code> · Vision-only from scratch</p>
+          </div>
+        </div>
+
+        <div class="card" style="flex:1; padding:16px 20px;">
+          <div class="card-header-flex" style="margin-bottom:8px;">
+            <div>
+              <span class="section-tag">Empirical Benchmark Leaderboard</span>
+              <h2 style="font-size:1.15rem;">All Evaluated Checkpoints on Leak-Free Group Split ($N = 1,341$)</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table" id="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Model &amp; Run ID</th>
+                  <th>Modality &amp; Pretraining</th>
+                  <th>Params</th>
+                  <th>Epochs (Best)</th>
+                  <th>Val Macro F1</th>
+                  <th>Test Accuracy (95% CI)</th>
+                  <th>Test Balanced Acc</th>
+                  <th>Test Macro F1</th>
+                  <th>Test Weighted F1</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARE PAGE 2: Architectural & Methodological Contrast Matrix -->
+      <section class="step-view" id="cstep-2">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Structural &amp; Mathematical Contrast</span>
+              <h2>Compare &amp; Contrast: Multimodal HLA-Net vs. Unimodal HLA-Net vs. ResNet-18</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="data-table contrast-table">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th class="col-highlight">Multimodal HLA-Net (Proposed)</th>
+                  <th>Unimodal HLA-Net (Vision Scratch)</th>
+                  <th>ResNet-18 Baselines (`baseline` / `ft2`)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Input Modalities</strong></td>
+                  <td class="col-highlight"><strong>Dual-Stream:</strong> $3\times 224\times 224$ RGB + $12\text{-D}$ Agronomic Context Vector</td>
+                  <td><strong>Single-Stream:</strong> $3\times 224\times 224$ RGB Image only</td>
+                  <td><strong>Single-Stream:</strong> $3\times 224\times 224$ RGB Image only</td>
+                </tr>
+                <tr>
+                  <td><strong>Stem Receptive Field</strong></td>
+                  <td class="col-highlight"><code>MSRStem</code>: Parallel $3\times 3$ and $5\times 5$ convs + $1\times 1$ fusion (preserves micro-lesions)</td>
+                  <td><code>MSRStem</code>: Parallel $3\times 3$ and $5\times 5$ convs + $1\times 1$ fusion</td>
+                  <td>Standard single $7\times 7$ stride-2 conv + $3\times 3$ MaxPool</td>
+                </tr>
+                <tr>
+                  <td><strong>Multi-Scale Lesion Extraction</strong></td>
+                  <td class="col-highlight"><code>DMSLBlock</code>: 3 parallel depthwise branches with dilation rates $d \in \{1, 2, 4\}$</td>
+                  <td><code>DMSLBlock</code>: 3 parallel depthwise branches with dilation rates $d \in \{1, 2, 4\}$</td>
+                  <td>Standard single-rate ($d=1$) dense $3\times 3$ residual blocks</td>
+                </tr>
+                <tr>
+                  <td><strong>Spatial Attention</strong></td>
+                  <td class="col-highlight"><code>CoordinateLesionAttention</code>: Orthogonal $H\times 1$ and $1\times W$ spatial pooling</td>
+                  <td><code>CoordinateLesionAttention</code>: Orthogonal $H\times 1$ and $1\times W$ spatial pooling</td>
+                  <td>None (isotropic global average pooling only)</td>
+                </tr>
+                <tr>
+                  <td><strong>Cross-Modal Fusion</strong></td>
+                  <td class="col-highlight"><strong>Learned Sigmoid Gate (<code>GatedFusion</code>):</strong> $\mathbf{g} = \sigma(\mathbf{W}_g[\mathbf{v}_h \Vert \mathbf{m}_h])$ + 15% modality dropout</td>
+                  <td>N/A (Linear head on $512\text{-D}$ visual features)</td>
+                  <td>N/A (Linear head on $512\text{-D}$ visual features)</td>
+                </tr>
+                <tr>
+                  <td><strong>Weight Initialization</strong></td>
+                  <td class="col-highlight"><strong>100% From Scratch</strong> (Kaiming He-Normal init)</td>
+                  <td><strong>100% From Scratch</strong> (Kaiming He-Normal init)</td>
+                  <td><strong>ImageNet-1K Pretrained</strong> (`IMAGENET1K_V1`, 1.28M photos)</td>
+                </tr>
+                <tr>
+                  <td><strong>Parameter Footprint</strong></td>
+                  <td class="col-highlight"><strong>1,711,863</strong> (~1.71M, $6.5\times$ smaller than ResNet-18)</td>
+                  <td><strong>1,543,543</strong> (~1.54M, $7.2\times$ smaller than ResNet-18)</td>
+                  <td><strong>11,188,311</strong> (~11.19M total; 8.4M–10.5M trainable)</td>
+                </tr>
+                <tr>
+                  <td><strong>Rare Fruit Class Performance</strong></td>
+                  <td class="col-highlight"><strong>Strong ($0.76 - 1.00$ F1):</strong> Agronomic organ/crop priors resolve cross-crop fruit ambiguity</td>
+                  <td><strong>Weak ($0.27 - 0.71$ F1):</strong> Struggles to separate visually similar blemished fruits from scratch</td>
+                  <td><strong>Moderate ($0.58 - 0.84$ F1):</strong> Plateaus at ~0.88 Macro F1 across 3 seeds</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARE PAGE 3: Interactive 23-Class Head-to-Head Comparator -->
+      <section class="step-view" id="cstep-3">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Granular Per-Class Diagnostics (`metrics.json`)</span>
+              <h2>Head-to-Head Per-Class Comparison (All 23 Classes)</h2>
+            </div>
+            <div class="comparator-controls">
+              <div class="control-group">
+                <label for="comp-model-a">Model A (Primary)</label>
+                <select id="comp-model-a"></select>
+              </div>
+              <div class="control-group">
+                <label for="comp-model-b">Model B (Baseline)</label>
+                <select id="comp-model-b"></select>
+              </div>
+              <div class="control-group">
+                <label for="comp-organ-filter">Filter Classes</label>
+                <select id="comp-organ-filter">
+                  <option value="all">All 23 Classes</option>
+                  <option value="fruit">Fruit Classes Only (10)</option>
+                  <option value="leaf">Foliar / Leaf Classes Only (13)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table" id="per-class-table">
+              <thead>
+                <tr>
+                  <th>Class Label</th>
+                  <th>Crop</th>
+                  <th>Organ</th>
+                  <th>Test Support ($N$)</th>
+                  <th id="th-model-a">Model A (P / R / F1)</th>
+                  <th id="th-model-b">Model B (P / R / F1)</th>
+                  <th>$\Delta$ F1 (A − B)</th>
+                </tr>
+              </thead>
+              <tbody id="per-class-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARE PAGE 4: Authentic Confusion Matrices & Convergence Curves -->
+      <section class="step-view" id="cstep-4">
+        <div class="card">
+          <div class="card-header-flex">
+            <div>
+              <span class="section-tag">Visual Evaluation Artifacts</span>
+              <h2>Held-Out Confusion Matrix &amp; Training Curves</h2>
+            </div>
+            <div class="control-group" style="min-width:340px;">
+              <label for="artifact-run-select">Select Experiment Checkpoint</label>
+              <select id="artifact-run-select"></select>
+            </div>
+          </div>
+
+          <div class="artifacts-grid">
+            <figure class="artifact-box">
+              <figcaption>Held-Out Test Confusion Matrix ($N = 1,341$)</figcaption>
+              <img id="cm-img" alt="Confusion matrix">
+            </figure>
+            <figure class="artifact-box">
+              <figcaption>Training &amp; Validation Convergence Curve</figcaption>
+              <img id="curve-img" alt="Training curve">
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPARE PAGE 5: Epoch Training History, Cross-Crop & Calibration -->
+      <section class="step-view" id="cstep-5">
+        <div style="display:grid; grid-template-columns:1.35fr 1fr; gap:18px; height:100%; overflow:hidden;">
+          <div class="card" style="padding:18px;">
+            <div class="card-header-flex" style="margin-bottom:8px;">
+              <div>
+                <span class="section-tag">Epoch-by-Epoch History (`training_history.csv`)</span>
+                <h2 style="font-size:1.1rem;" id="hist-title">Epoch Training Log</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table" id="history-table">
+                <thead>
+                  <tr>
+                    <th>Epoch</th>
+                    <th>Train Loss</th>
+                    <th>Val Loss</th>
+                    <th>Val Acc</th>
+                    <th>Val Bal Acc</th>
+                    <th>Val Macro F1</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody id="history-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:14px; height:100%; overflow:hidden;">
+            <div class="card" style="flex:1; padding:16px;">
+              <span class="section-tag">45 Runs · 3 Seeds (`results/cross_crop/`)</span>
+              <h3 style="font-size:1rem; margin-bottom:6px;">Unseen Cross-Crop Generalization</h3>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Held-Out Crop</th>
+                      <th>Runs</th>
+                      <th>Mean Macro F1</th>
+                      <th>Mean ROC-AUC</th>
+                    </tr>
+                  </thead>
+                  <tbody id="crosscrop-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card" style="flex:1; padding:16px;">
+              <span class="section-tag">Post-Hoc Temperature Scaling ($T=1.246$)</span>
+              <h3 style="font-size:1rem; margin-bottom:6px;">Calibration Coverage (`calibration.json`)</h3>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Threshold ($\tau$)</th>
+                      <th>Test Coverage</th>
+                      <th>Accepted Accuracy</th>
+                    </tr>
+                  </thead>
+                  <tbody id="calibration-body"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Page-Wise Navigation Bar -->
+    <footer class="pager-bar">
+      <div class="wrap pager-inner">
+        <span class="pager-info" id="compare-indicator">Comparison Page 1 of 5 · Model Leaderboard &amp; KPIs</span>
+        <div class="pager-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="c-prev-btn" disabled>← Previous View</button>
+          <button type="button" class="btn btn-primary btn-sm" id="c-next-btn">Next View →</button>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="/static/compare.js"></script>
+</body>
+</html>

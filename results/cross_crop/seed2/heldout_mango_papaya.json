@@ -1,0 +1,51 @@
+{
+  "held_out": [
+    "mango",
+    "papaya"
+  ],
+  "seen_crops": [
+    "apple",
+    "banana",
+    "citrus",
+    "guava"
+  ],
+  "seed": 2,
+  "best_epoch": 8,
+  "best_val_metric": 0.9823,
+  "n_train": 4471,
+  "seen_crops_test": {
+    "accuracy": 0.9875,
+    "balanced_accuracy": 0.9875,
+    "macro_f1": 0.9875,
+    "n_images": 959,
+    "fraction_diseased": 0.4984358706986444,
+    "roc_auc": 0.9991
+  },
+  "held_out_crops": {
+    "accuracy": 0.6614,
+    "balanced_accuracy": 0.6715,
+    "macro_f1": 0.6612,
+    "n_images": 2543,
+    "fraction_diseased": 0.5717656311443178,
+    "roc_auc": 0.7724
+  },
+  "held_out_per_crop": {
+    "mango": {
+      "accuracy": 0.8073,
+      "balanced_accuracy": 0.8055,
+      "macro_f1": 0.806,
+      "n_images": 1266,
+      "fraction_diseased": 0.4849921011058452,
+      "roc_auc": 0.9101
+    },
+    "papaya": {
+      "accuracy": 0.5168,
+      "balanced_accuracy": 0.5273,
+      "macro_f1": 0.5081,
+      "n_images": 1277,
+      "fraction_diseased": 0.6577916992952232,
+      "roc_auc": 0.5558
+    }
+  },
+  "generalization_gap_macro_f1": 0.32630000000000003
+}

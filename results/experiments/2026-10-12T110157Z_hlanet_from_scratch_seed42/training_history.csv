@@ -1,0 +1,2 @@
+epoch,train_loss,val_loss,val_accuracy,val_balanced_accuracy,val_macro_f1,val_weighted_f1,learning_rate,epoch_seconds
+1,2.2637,1.0447,0.7008,0.4391,0.3978,0.6819,0.0005,726.5

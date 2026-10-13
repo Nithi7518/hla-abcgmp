@@ -1,0 +1,57 @@
+{
+  "checkpoint": "checkpoints/2026-10-12T183341Z_multimodal_hlanet_fusion_seed42.pt",
+  "temperature": 1.2462607622146606,
+  "ece_val_before": 0.05776889610042728,
+  "ece_val_after": 0.057514085016077146,
+  "ece_test_before": 0.05568371383135749,
+  "ece_test_after": 0.05115510415533068,
+  "threshold_confident": 0.714900016784668,
+  "threshold_refuse": 0.30,
+  "thresholds_derived_from": "validation split only (confident: accepted accuracy >= 0.985; refuse: rejected accuracy <= 0.5)",
+  "test_tiers": {
+    "confident": {
+      "coverage": 0.7293064876957495,
+      "accuracy": 0.9805725971370143
+    },
+    "uncertain": {
+      "coverage": 0.04325130499627144,
+      "accuracy": 0.7068965517241379
+    },
+    "refuse": {
+      "coverage": 0.22744220730797912,
+      "accuracy": 0.34098360655737703
+    }
+  },
+  "test_coverage_table": [
+    {
+      "threshold": 0.5,
+      "coverage": 0.8501118568232662,
+      "accuracy_on_accepted": 0.9254385964912281
+    },
+    {
+      "threshold": 0.6,
+      "coverage": 0.785234899328859,
+      "accuracy_on_accepted": 0.9582146248812915
+    },
+    {
+      "threshold": 0.7,
+      "coverage": 0.738255033557047,
+      "accuracy_on_accepted": 0.9787878787878788
+    },
+    {
+      "threshold": 0.8,
+      "coverage": 0.6927665920954511,
+      "accuracy_on_accepted": 0.9946178686759957
+    },
+    {
+      "threshold": 0.9,
+      "coverage": 0.6010439970171514,
+      "accuracy_on_accepted": 1.0
+    },
+    {
+      "threshold": 0.95,
+      "coverage": 0.48471290082028334,
+      "accuracy_on_accepted": 1.0
+    }
+  ]
+}

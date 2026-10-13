@@ -1,0 +1,49 @@
+# --- Raw / processed data (never versioned; regenerate or re-download) ---
+data/raw/
+data/processed/
+!data/processed/.gitkeep
+ABCGMP Fruit and Leaf Disease Six Crop Dataset/
+*.zip
+*.tar.gz
+
+# --- Model checkpoints ---
+checkpoints/*
+!checkpoints/.gitkeep
+!checkpoints/2026-10-12T183341Z_multimodal_hlanet_fusion_seed42.pt
+
+# --- Logs / experiment run artifacts (regenerable) ---
+logs/*
+!logs/.gitkeep
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.Python
+*.so
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+.idea/
+.vscode/
+
+# --- Env / secrets ---
+.env
+.env.*
+
+# --- Misc ---
+*.log
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

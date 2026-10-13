@@ -1,0 +1,181 @@
+{
+  "run_id": "2026-10-12T183341Z_multimodal_hlanet_fusion_seed42",
+  "checkpoint_path": "checkpoints\\2026-10-12T183341Z_multimodal_hlanet_fusion_seed42.pt",
+  "n_test_images": 1341,
+  "test_metrics": {
+    "accuracy": 0.9635,
+    "balanced_accuracy": 0.9193,
+    "macro_precision": 0.9172,
+    "macro_recall": 0.9193,
+    "macro_f1": 0.9169,
+    "weighted_precision": 0.9645,
+    "weighted_recall": 0.9635,
+    "weighted_f1": 0.9635,
+    "per_class": {
+      "apple__black_rot": {
+        "precision": 1.0,
+        "recall": 0.9933,
+        "f1": 0.9966,
+        "support": 297
+      },
+      "apple__disease_fruit": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 18
+      },
+      "apple__healthy_leaf": {
+        "precision": 0.9934,
+        "recall": 1.0,
+        "f1": 0.9967,
+        "support": 300
+      },
+      "banana__cordana": {
+        "precision": 0.9231,
+        "recall": 1.0,
+        "f1": 0.96,
+        "support": 60
+      },
+      "banana__disease_fruit": {
+        "precision": 0.8,
+        "recall": 0.7273,
+        "f1": 0.7619,
+        "support": 11
+      },
+      "banana__healthy_fruit": {
+        "precision": 0.8571,
+        "recall": 0.9,
+        "f1": 0.878,
+        "support": 20
+      },
+      "banana__healthy_leaf": {
+        "precision": 1.0,
+        "recall": 0.9375,
+        "f1": 0.9677,
+        "support": 80
+      },
+      "citrus__canker_leaf": {
+        "precision": 0.8571,
+        "recall": 0.9677,
+        "f1": 0.9091,
+        "support": 31
+      },
+      "citrus__disease_fruit": {
+        "precision": 0.92,
+        "recall": 1.0,
+        "f1": 0.9583,
+        "support": 23
+      },
+      "citrus__healthy_fruit": {
+        "precision": 1.0,
+        "recall": 0.92,
+        "f1": 0.9583,
+        "support": 25
+      },
+      "citrus__healthy_leaf": {
+        "precision": 0.9524,
+        "recall": 0.8,
+        "f1": 0.8696,
+        "support": 25
+      },
+      "guava__disease_fruit": {
+        "precision": 0.9545,
+        "recall": 0.875,
+        "f1": 0.913,
+        "support": 24
+      },
+      "guava__healthy_fruit": {
+        "precision": 0.7,
+        "recall": 0.875,
+        "f1": 0.7778,
+        "support": 8
+      },
+      "guava__healthy_leaf": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 23
+      },
+      "guava__red_rust": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 14
+      },
+      "mango__bacterial_canker": {
+        "precision": 0.9836,
+        "recall": 1.0,
+        "f1": 0.9917,
+        "support": 60
+      },
+      "mango__disease_fruit": {
+        "precision": 0.7576,
+        "recall": 0.7812,
+        "f1": 0.7692,
+        "support": 32
+      },
+      "mango__healthy_fruit": {
+        "precision": 0.86,
+        "recall": 0.8269,
+        "f1": 0.8431,
+        "support": 52
+      },
+      "mango__healthy_leaf": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 46
+      },
+      "papaya__disease_fruit": {
+        "precision": 0.7368,
+        "recall": 0.7778,
+        "f1": 0.7568,
+        "support": 18
+      },
+      "papaya__healthy_fruit": {
+        "precision": 0.8,
+        "recall": 0.7619,
+        "f1": 0.7805,
+        "support": 21
+      },
+      "papaya__healthy_leaf": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 45
+      },
+      "papaya__ring_spot": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 108
+      }
+    },
+    "n_samples": 1341
+  },
+  "binary_metrics": null,
+  "bootstrap_confidence_intervals": {
+    "accuracy": {
+      "mean": 0.9631,
+      "ci_lower": 0.953,
+      "ci_upper": 0.9732,
+      "confidence": 0.95,
+      "n_bootstrap": 1000
+    },
+    "balanced_accuracy": {
+      "mean": 0.9189,
+      "ci_lower": 0.893,
+      "ci_upper": 0.9422,
+      "confidence": 0.95,
+      "n_bootstrap": 1000
+    },
+    "macro_f1": {
+      "mean": 0.9143,
+      "ci_lower": 0.8888,
+      "ci_upper": 0.9375,
+      "confidence": 0.95,
+      "n_bootstrap": 1000
+    }
+  },
+  "note_on_statistical_significance": "These are single-model confidence intervals, not a paired comparison. This project's primary research question (image-only vs multimodal) cannot currently be tested this way: METADATA_PAIRING_STATUS is NOT_AVAILABLE for this dataset release, so no multimodal model exists to compare against (see results/dataset_summary.md). Do not interpret a narrow single-model CI as evidence for or against any multimodal claim."
+}

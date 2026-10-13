@@ -1,0 +1,236 @@
+{
+  "generated_at_utc": "2026-10-11T12:27:16.527922+00:00",
+  "task": "full_class",
+  "source_collections_used": [
+    "dataset_main"
+  ],
+  "exclude_label_conflicting_duplicate_groups": true,
+  "exclusions": {
+    "corrupted": 0,
+    "unmapped_class_folder": 0,
+    "excluded_source_collection": 9821,
+    "manual_exclusion": 1,
+    "label_conflicting_duplicate_group": 921,
+    "final_usable_images": 8936,
+    "total_images_in_audit": 19679
+  },
+  "n_images_total": 8936,
+  "n_groups_total": 6171,
+  "group_size_distribution": {
+    "min": 1,
+    "max": 60,
+    "mean": 1.448,
+    "n_singleton_groups": 4638
+  },
+  "split_ratios_config": {
+    "train": 0.7,
+    "val": 0.15,
+    "test": 0.15
+  },
+  "split_seed": 42,
+  "n_images_per_split": {
+    "train": 6248,
+    "val": 1347,
+    "test": 1341
+  },
+  "n_labels": 23,
+  "label_distribution_per_split": {
+    "test": {
+      "apple__black_rot": 297,
+      "apple__disease_fruit": 18,
+      "apple__healthy_leaf": 300,
+      "banana__cordana": 60,
+      "banana__disease_fruit": 11,
+      "banana__healthy_fruit": 20,
+      "banana__healthy_leaf": 80,
+      "citrus__canker_leaf": 31,
+      "citrus__disease_fruit": 23,
+      "citrus__healthy_fruit": 25,
+      "citrus__healthy_leaf": 25,
+      "guava__disease_fruit": 24,
+      "guava__healthy_fruit": 8,
+      "guava__healthy_leaf": 23,
+      "guava__red_rust": 14,
+      "mango__bacterial_canker": 60,
+      "mango__disease_fruit": 32,
+      "mango__healthy_fruit": 52,
+      "mango__healthy_leaf": 46,
+      "papaya__disease_fruit": 18,
+      "papaya__healthy_fruit": 21,
+      "papaya__healthy_leaf": 45,
+      "papaya__ring_spot": 108
+    },
+    "train": {
+      "apple__black_rot": 1387,
+      "apple__disease_fruit": 85,
+      "apple__healthy_leaf": 1401,
+      "banana__cordana": 280,
+      "banana__disease_fruit": 51,
+      "banana__healthy_fruit": 92,
+      "banana__healthy_leaf": 375,
+      "citrus__canker_leaf": 145,
+      "citrus__disease_fruit": 109,
+      "citrus__healthy_fruit": 117,
+      "citrus__healthy_leaf": 117,
+      "guava__disease_fruit": 112,
+      "guava__healthy_fruit": 34,
+      "guava__healthy_leaf": 104,
+      "guava__red_rust": 62,
+      "mango__bacterial_canker": 281,
+      "mango__disease_fruit": 148,
+      "mango__healthy_fruit": 243,
+      "mango__healthy_leaf": 213,
+      "papaya__disease_fruit": 86,
+      "papaya__healthy_fruit": 97,
+      "papaya__healthy_leaf": 208,
+      "papaya__ring_spot": 501
+    },
+    "val": {
+      "apple__black_rot": 297,
+      "apple__disease_fruit": 19,
+      "apple__healthy_leaf": 301,
+      "banana__cordana": 60,
+      "banana__disease_fruit": 11,
+      "banana__healthy_fruit": 20,
+      "banana__healthy_leaf": 80,
+      "citrus__canker_leaf": 31,
+      "citrus__disease_fruit": 24,
+      "citrus__healthy_fruit": 25,
+      "citrus__healthy_leaf": 26,
+      "guava__disease_fruit": 24,
+      "guava__healthy_fruit": 8,
+      "guava__healthy_leaf": 23,
+      "guava__red_rust": 14,
+      "mango__bacterial_canker": 61,
+      "mango__disease_fruit": 32,
+      "mango__healthy_fruit": 52,
+      "mango__healthy_leaf": 46,
+      "papaya__disease_fruit": 19,
+      "papaya__healthy_fruit": 21,
+      "papaya__healthy_leaf": 45,
+      "papaya__ring_spot": 108
+    }
+  },
+  "per_label_contamination": {
+    "apple__healthy_fruit": {
+      "total_images": 338,
+      "conflicting_images": 338,
+      "pct_conflicting": 100.0
+    },
+    "apple__disease_fruit": {
+      "total_images": 286,
+      "conflicting_images": 164,
+      "pct_conflicting": 57.3
+    },
+    "banana__cordana": {
+      "total_images": 739,
+      "conflicting_images": 338,
+      "pct_conflicting": 45.7
+    },
+    "citrus__healthy_leaf": {
+      "total_images": 192,
+      "conflicting_images": 24,
+      "pct_conflicting": 12.5
+    },
+    "citrus__healthy_fruit": {
+      "total_images": 190,
+      "conflicting_images": 23,
+      "pct_conflicting": 12.1
+    },
+    "papaya__disease_fruit": {
+      "total_images": 127,
+      "conflicting_images": 4,
+      "pct_conflicting": 3.1
+    },
+    "papaya__healthy_fruit": {
+      "total_images": 143,
+      "conflicting_images": 4,
+      "pct_conflicting": 2.8
+    },
+    "banana__disease_fruit": {
+      "total_images": 74,
+      "conflicting_images": 1,
+      "pct_conflicting": 1.4
+    },
+    "citrus__canker_leaf": {
+      "total_images": 210,
+      "conflicting_images": 3,
+      "pct_conflicting": 1.4
+    },
+    "citrus__disease_fruit": {
+      "total_images": 158,
+      "conflicting_images": 2,
+      "pct_conflicting": 1.3
+    },
+    "mango__healthy_leaf": {
+      "total_images": 308,
+      "conflicting_images": 3,
+      "pct_conflicting": 1.0
+    },
+    "banana__healthy_fruit": {
+      "total_images": 133,
+      "conflicting_images": 1,
+      "pct_conflicting": 0.8
+    },
+    "mango__bacterial_canker": {
+      "total_images": 404,
+      "conflicting_images": 2,
+      "pct_conflicting": 0.5
+    },
+    "mango__disease_fruit": {
+      "total_images": 213,
+      "conflicting_images": 1,
+      "pct_conflicting": 0.5
+    },
+    "mango__healthy_fruit": {
+      "total_images": 348,
+      "conflicting_images": 1,
+      "pct_conflicting": 0.3
+    },
+    "apple__healthy_leaf": {
+      "total_images": 2008,
+      "conflicting_images": 6,
+      "pct_conflicting": 0.3
+    },
+    "apple__black_rot": {
+      "total_images": 1987,
+      "conflicting_images": 6,
+      "pct_conflicting": 0.3
+    },
+    "papaya__healthy_leaf": {
+      "total_images": 298,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    },
+    "guava__disease_fruit": {
+      "total_images": 160,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    },
+    "guava__red_rust": {
+      "total_images": 90,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    },
+    "guava__healthy_leaf": {
+      "total_images": 150,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    },
+    "guava__healthy_fruit": {
+      "total_images": 50,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    },
+    "banana__healthy_leaf": {
+      "total_images": 535,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    },
+    "papaya__ring_spot": {
+      "total_images": 717,
+      "conflicting_images": 0,
+      "pct_conflicting": 0.0
+    }
+  }
+}

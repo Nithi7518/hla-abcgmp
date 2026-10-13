@@ -1,0 +1,63 @@
+# Boosted Training Configuration for Custom HLA-Net (100% From Scratch)
+# Retains pure custom architecture while unlocking higher resolution, 
+# balanced focal loss for hard minority classes, and cosine annealing.
+
+experiment:
+  name: hlanet_boosted_scratch
+  seed: 42
+  device: cuda
+
+data:
+  audit_csv: ./results/dataset_audit.csv
+  duplicate_groups_csv: ./data/manifests/duplicate_groups.csv
+  classes_config: ./configs/classes.yaml
+  data_root: ./data/raw
+  manifests_dir: ./data/manifests
+  source_collections: [dataset_main]
+  exclude_label_conflicting_duplicate_groups: true
+  manual_exclusions_csv: ./configs/manual_exclusions.csv
+  robust_groups_csv: ./data/manifests/robust_groups.csv
+  task: full_class
+
+splitting:
+  strategy: stratified_group
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  seed: 42
+
+image:
+  size: 256              # Upgraded resolution (30% more spatial pixels for micro-symptom fidelity)
+  normalization: imagenet
+  train_augmentation:
+    horizontal_flip: true
+    vertical_flip: true
+    rotation_degrees: 15
+    color_jitter: 0.2
+    random_erasing: 0.2
+
+model:
+  backbone: hla_net
+  type: hla_net
+  stage_channels: [64, 128, 256, 512]
+  stage_depths: [2, 2, 3, 2]
+  dropout: 0.3
+  drop_path_rate: 0.1
+
+training:
+  batch_size: 64
+  epochs: 35
+  early_stopping_patience: 12
+  early_stopping_metric: val_macro_f1
+  optimizer: adamw
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  lr_scheduler: cosine          # Smooth continuous learning rate decay
+  class_imbalance_strategy: balanced_focal  # Balanced sampler + Focal Loss (gamma=1.5)
+  label_smoothing: 0.05
+  num_workers: 0
+
+output:
+  experiments_dir: ./results/experiments
+  checkpoints_dir: ./checkpoints
+  logs_dir: ./logs

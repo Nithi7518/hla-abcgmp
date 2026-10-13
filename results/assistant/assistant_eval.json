@@ -1,0 +1,24 @@
+{
+  "retrieval": {
+    "intent_questions": 54,
+    "top1_topic_correct": 1.0,
+    "off_topic_questions": 6,
+    "off_topic_declined": 1.0
+  },
+  "test_set": {
+    "n_test_images": 1341,
+    "tier_share": {
+      "confident": 0.866517524235645,
+      "uncertain": 0.07979120059656973,
+      "refuse": 0.053691275167785234
+    },
+    "answer_kind_share_of_non_refused": {
+      "generic": 0.07959022852639874,
+      "specific": 0.4389282899921198,
+      "healthy": 0.48148148148148145
+    },
+    "disease_specific_advice_given": 557,
+    "advice_precision_true_disease": 0.9982046678635548,
+    "advice_with_citations": 1.0
+  }
+}

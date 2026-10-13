@@ -1,0 +1,216 @@
+# Configurable class mapping for the ABCGMP Fruit and Leaf Disease Six Crop Dataset.
+#
+# This file is the ONLY place that maps the actual downloaded folder names to
+# canonical crop/organ/disease_status/disease_name labels. src/dataset_audit.py
+# (and later src/data_loader.py) look folder names up here; a folder that does not
+# appear under any `folder_names:` list is reported as UNMAPPED rather than guessed.
+#
+# Populated on 2026-08-18 by directly inspecting the extracted archives from
+# https://data.mendeley.com/datasets/fhbvmpcyy2/2 (DOI 10.17632/fhbvmpcyy2.2):
+#   - data/raw/dataset_main/  (from "6 indian Fruit crops Fruit and Leaf Disease Dataset.zip")
+#   - data/raw/dataset_v1/    (from "... (version 1).zip")
+# Both collections use the same 24 class-folder names except for a naming variant
+# of the Citrus canker-leaf folder ("Citrus CanckerLeaf" vs "Citrus Cancker Leaf"),
+# which is listed under the same canonical class below.
+#
+# IMPORTANT — organ ambiguity:
+# The Mendeley dataset description lists exactly 4 categories per crop (Healthy Fruit,
+# Disease Fruit, Healthy Leaf, <disease name>) but does not state, for every disease
+# folder, whether the photographed organ is the fruit or the leaf. Two fields are used
+# to be explicit rather than silently guessing:
+#   organ: fruit | leaf | unknown
+#   organ_confidence: high | low | unresolved
+# `high` = organ is unambiguous from the folder name itself (e.g. contains "Fruit"/"Leaf").
+# `low`  = organ inferred from crop's other 3 folders / dataset description wording, not
+#          confirmed from the folder name or file content.
+# `unresolved` = could not be inferred at all; treat organ as unknown until a human
+#          (domain expert or visual inspection) confirms it. Do NOT run organ-specific
+#          (fruit-only / leaf-only) experiments on `unresolved` classes without fixing
+#          this file first.
+
+apple:
+  healthy_fruit:
+    folder_names: ["Healthy Apple Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: healthy
+
+  disease_fruit:
+    folder_names: ["Disease Apple Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: diseased
+
+  healthy_leaf:
+    folder_names: ["Apple___healthy"]
+    organ: leaf
+    organ_confidence: low
+    disease_status: healthy
+    notes: >
+      Folder name follows the well-known PlantVillage naming convention
+      ("Apple___healthy"), not this dataset's own "<Crop> Healthy Leaf" pattern used
+      elsewhere. Organ inferred as leaf by elimination (crop already has fruit-only
+      healthy/disease folders) and by PlantVillage provenance, not verified from
+      image content. Flag for manual confirmation and possible provenance disclosure
+      in any resulting publication.
+
+  black_rot:
+    folder_names: ["Apple___Black_rot"]
+    organ: leaf
+    organ_confidence: low
+    disease_status: diseased
+    disease_name: black_rot
+    notes: >
+      Same PlantVillage-style naming as Apple___healthy; same organ caveat applies.
+
+banana:
+  healthy_fruit:
+    folder_names: ["Healthy Banana Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: healthy
+
+  disease_fruit:
+    folder_names: ["Disease Banana Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: diseased
+
+  healthy_leaf:
+    folder_names: ["Healthy Banana Leaf"]
+    organ: leaf
+    organ_confidence: high
+    disease_status: healthy
+
+  cordana:
+    folder_names: ["Banana cordana"]
+    organ: leaf
+    organ_confidence: low
+    disease_status: diseased
+    disease_name: cordana
+    notes: >
+      Cordana leaf spot is a foliar disease; organ not stated in the folder name
+      itself so confidence is "low" rather than "high", but the disease is
+      leaf-specific by definition (matches dataset description ordering).
+
+citrus:
+  healthy_fruit:
+    folder_names: ["Citrus Healthy Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: healthy
+
+  disease_fruit:
+    folder_names: ["Citrus Fruit disease"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: diseased
+
+  healthy_leaf:
+    folder_names: ["Citrus Healthy Leaf"]
+    organ: leaf
+    organ_confidence: high
+    disease_status: healthy
+
+  canker_leaf:
+    folder_names: ["Citrus CanckerLeaf", "Citrus Cancker Leaf"]
+    organ: leaf
+    organ_confidence: high
+    disease_status: diseased
+    disease_name: canker
+    notes: >
+      Two spelling/spacing variants of the same folder name appear across the
+      "main" and "v1" archive collections ("CanckerLeaf" vs "Cancker Leaf", both
+      misspellings of "canker"); both map to this single canonical class.
+
+guava:
+  healthy_fruit:
+    folder_names: ["Guava Healthly Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: healthy
+    notes: "Folder name contains a typo (\"Healthly\") in the source dataset."
+
+  disease_fruit:
+    folder_names: ["Guava Disease Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: diseased
+
+  healthy_leaf:
+    folder_names: ["Guava Healthly Leaf"]
+    organ: leaf
+    organ_confidence: high
+    disease_status: healthy
+    notes: "Folder name contains a typo (\"Healthly\") in the source dataset."
+
+  red_rust:
+    folder_names: ["Guava Red Rust"]
+    organ: leaf
+    organ_confidence: low
+    disease_status: diseased
+    disease_name: red_rust
+    notes: >
+      Red rust (algal leaf spot, Cephaleuros virescens) is predominantly foliar;
+      organ not explicitly stated in the folder name so confidence is "low".
+
+mango:
+  healthy_fruit:
+    folder_names: ["Healthy Mango Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: healthy
+
+  disease_fruit:
+    folder_names: ["Disease Mango Fruit"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: diseased
+
+  healthy_leaf:
+    folder_names: ["Mang Healthy Leaf"]
+    organ: leaf
+    organ_confidence: high
+    disease_status: healthy
+    notes: "Folder name contains a typo (\"Mang\" instead of \"Mango\")."
+
+  bacterial_canker:
+    folder_names: ["Mango Bacterial Canker"]
+    organ: unknown
+    organ_confidence: unresolved
+    disease_status: diseased
+    disease_name: bacterial_canker
+    notes: >
+      Bacterial canker in mango is reported in the literature on both fruit and
+      leaves/stems, and the folder name does not disambiguate. Do NOT assume an
+      organ for this class without visual/expert confirmation.
+
+papaya:
+  healthy_fruit:
+    folder_names: ["Papaya Fruit Healthy"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: healthy
+
+  disease_fruit:
+    folder_names: ["Papaya Fruit Disease"]
+    organ: fruit
+    organ_confidence: high
+    disease_status: diseased
+
+  healthy_leaf:
+    folder_names: ["Papaya Healthy leaf"]
+    organ: leaf
+    organ_confidence: high
+    disease_status: healthy
+
+  ring_spot:
+    folder_names: ["Papaya RingSpot"]
+    organ: unknown
+    organ_confidence: unresolved
+    disease_status: diseased
+    disease_name: ring_spot
+    notes: >
+      Papaya ringspot virus produces symptoms on both fruit and leaves, and the
+      folder name does not disambiguate. Do NOT assume an organ for this class
+      without visual/expert confirmation.
